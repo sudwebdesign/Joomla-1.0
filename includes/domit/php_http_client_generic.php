@@ -512,7 +512,7 @@ class php_http_connection {
 	* @param string The host name
 	* @return string The formatted host name
 	*/
-	function formatHost($hostString) {
+	public static function formatHost($hostString) {
 		$hasProtocol = (substr(strtoupper($hostString), 0, 7) == 'HTTP://');
 
 		if ($hasProtocol) {

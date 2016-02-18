@@ -22,7 +22,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_newsfeed {
 
-	function displaylist( &$categories, &$rows, $catid, $currentcat=NULL, &$params, $tabclass ) {
+	public static function displaylist( &$categories, &$rows, $catid, $currentcat=NULL, &$params, $tabclass ) {
 		global $Itemid, $mosConfig_live_site, $hide_js;
 		if ( $params->get( 'page_title' ) ) {
 			?>
@@ -84,7 +84,7 @@ class HTML_newsfeed {
 	/**
 	* Display Table of items
 	*/
-	function showTable( &$params, &$rows, $catid, $tabclass ) {
+public static function showTable( &$params, &$rows, $catid, $tabclass ) {
 		global $mosConfig_live_site, $Itemid;
 		// icon in table display
 		$img = mosAdminMenus::ImageCheck( 'con_info.png', '/images/M_images/', $params->get( 'icon' ) );
@@ -171,7 +171,7 @@ class HTML_newsfeed {
 	/**
 	* Display links to categories
 	*/
-	function showCategories( &$params, &$categories, $catid ) {
+public static function showCategories( &$params, &$categories, $catid ) {
 		global $mosConfig_live_site, $Itemid;
 		?>
 		<ul>
@@ -223,7 +223,7 @@ class HTML_newsfeed {
 	}
 
 
-	function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params ) {		
+public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params ) {
 		?>
 		<table width="100%" class="contentpane<?php echo $params->get( 'pageclass_sfx' ); ?>">
 		<?php

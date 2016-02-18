@@ -370,10 +370,25 @@ class xml_domit_rss_elementindexer extends xml_domit_rss_base {
 	* @param string The name of the requested element
 	* @return string The element text, or an empty string
 	*/
-	function getElementText($elementName) {
-		$elementName = strtolower($elementName);
-	    return $this->_getElementText($elementName, $this->DOMIT_RSS_indexer);
+	function getElementText() {
+		$element =& $this->node;
+		$result = '';
+		$total = $element->childCount;
+
+		for ($i = 0; $i < $total; $i++) {
+			$currNode =& $element->childNodes[$i];
+
+			if ($currNode->nodeType == DOMIT_CDATA_SECTION_NODE) {
+				$result .= $currNode->nodeValue;
+			}
+			else {
+				$result .= $currNode->toString();
+			}
+		}
+
+		return $result;
 	} //getElementText
+
 
 	/**
 	* Gets the text at the specified index

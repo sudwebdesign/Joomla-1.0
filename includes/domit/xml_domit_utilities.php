@@ -38,7 +38,7 @@ class DOMIT_Utilities {
 	* @param boolean True if illegal xml characters in text nodes and attributes should be converted to entities
 	* @return string The formatted string representation
 	*/
-	function toNormalizedString (&$node, $subEntities=false, $definedEntities) {
+	public static function toNormalizedString (&$node, $subEntities=false, $definedEntities) {
 		$node_level = 0;
 		$response = '';
 
@@ -80,7 +80,7 @@ class DOMIT_Utilities {
 	* @param array User defined translation table for entities
 	* @return string The normalized string representation
 	*/
-	function getNormalizedString(&$node, $node_level, $subEntities=false, $definedEntities) {
+	public static function getNormalizedString(&$node, $node_level, $subEntities=false, $definedEntities) {
 		$response = '';
 
 		switch ($node->nodeType)  {
@@ -160,7 +160,7 @@ class DOMIT_Utilities {
 	* @param array User defined translation table for entities
 	* @return string The normalized string representation
 	*/
-	function getNormalizedElementString(&$node, $response, $node_level,
+	public static function getNormalizedElementString(&$node, $response, $node_level,
 											$subEntities, $definedEntities) {
 		$response .= '<' . $node->nodeName;
 
@@ -248,7 +248,7 @@ class DOMIT_Utilities {
 	* @param Object The node to be tested
 	* @return boolean True if the node is a Text node
 	*/
-	function isTextNode(&$node) {
+	public static function isTextNode(&$node) {
 		$type = $node->nodeType;
 		return (($type == DOMIT_TEXT_NODE) || ($type == DOMIT_CDATA_SECTION_NODE));
 	} //isTextNode
@@ -258,7 +258,7 @@ class DOMIT_Utilities {
 	* @param int The current node level
 	* @return string The indentation required for the specified node level
 	*/
-	function getIndentation($node_level) {
+	public static function getIndentation($node_level) {
 		$INDENT_LEN = '    ';
 		$indentation = "\n";
 
@@ -331,7 +331,7 @@ class DOMIT_Utilities {
 	* @param boolean True if the string is to be sent directly to output
 	* @return string The HTML formatted string
 	*/
-	function forHTML($text, $doPrint = false) {
+	public static function forHTML($text, $doPrint = false) {
 		if ($doPrint) {
 			print ('<pre>' . htmlspecialchars($text) . '</pre>');
 		}
