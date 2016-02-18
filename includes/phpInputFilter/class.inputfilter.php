@@ -67,6 +67,20 @@ class InputFilter
 	}
 
 	/**
+	 * Function to determine if contents of an attribute is safe
+	 *
+	 * @access	protected
+	 * @param	array	$attrSubSet	A 2 element array for attributes name,value
+	 * @return	boolean True if bad code is detected
+	 */
+	function badAttributeValue($attrSubSet)
+	{
+		$attrSubSet[0] = strtolower($attrSubSet[0]);
+		$attrSubSet[1] = strtolower($attrSubSet[1]);
+		return (((strpos($attrSubSet[1], 'expression') !== false) && ($attrSubSet[0]) == 'style') || (strpos($attrSubSet[1], 'javascript:') !== false) || (strpos($attrSubSet[1], 'behaviour:') !== false) || (strpos($attrSubSet[1], 'vbscript:') !== false) || (strpos($attrSubSet[1], 'mocha:') !== false) || (strpos($attrSubSet[1], 'livescript:') !== false));
+	}
+
+	/**
 	 * Method to be called by another php script. Processes for XSS and
 	 * specified bad code.
 	 *
@@ -439,19 +453,7 @@ class InputFilter
 		return $newSet;
 	}
 
-	/**
-	 * Function to determine if contents of an attribute is safe
-	 *
-	 * @access	protected
-	 * @param	array	$attrSubSet	A 2 element array for attributes name,value
-	 * @return	boolean True if bad code is detected
-	 */
-	function badAttributeValue($attrSubSet)
-	{
-		$attrSubSet[0] = strtolower($attrSubSet[0]);
-		$attrSubSet[1] = strtolower($attrSubSet[1]);
-		return (((strpos($attrSubSet[1], 'expression') !== false) && ($attrSubSet[0]) == 'style') || (strpos($attrSubSet[1], 'javascript:') !== false) || (strpos($attrSubSet[1], 'behaviour:') !== false) || (strpos($attrSubSet[1], 'vbscript:') !== false) || (strpos($attrSubSet[1], 'mocha:') !== false) || (strpos($attrSubSet[1], 'livescript:') !== false));
-	}
+
 
 	/**
 	 * Try to convert to plaintext
