@@ -931,7 +931,7 @@ class mosMainFrame {
 	* Added as of 1.0.8
 	* Deprecated 1.1
 	*/
-	function sessionCookieValue( $id=null ) {
+	public static function sessionCookieValue( $id=null ) {
 		global $mainframe;
 
 		$type 		= $mainframe->getCfg( 'session_type' );
