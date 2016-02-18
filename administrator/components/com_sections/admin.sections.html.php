@@ -25,7 +25,7 @@ class sections_html {
 	* @param array An array of category objects
 	* @param string The name of the category section
 	*/
-	function show( &$rows, $scope, $myid, &$pageNav, $option ) {
+	public static function show( &$rows, $scope, $myid, &$pageNav, $option ) {
 		global $my;
 
 		mosCommonHTML::loadOverlib();

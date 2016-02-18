@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Content
 */
 class TOOLBAR_FrontPage {
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::archiveList();
 		mosMenuBar::spacer();

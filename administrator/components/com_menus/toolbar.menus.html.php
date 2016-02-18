@@ -23,7 +23,7 @@ class TOOLBAR_menus {
 	/**
 	* Draws the menu for a New top menu item
 	*/
-	function _NEW()	{
+	public static function _NEW()	{
 		mosMenuBar::startTable();
 		mosMenuBar::customX( 'edit', 'next.png', 'next_f2.png', 'Next', true );
 		mosMenuBar::spacer();
@@ -36,7 +36,7 @@ class TOOLBAR_menus {
 	/**
 	* Draws the menu to Move Menut Items
 	*/
-	function _MOVEMENU()	{
+	public static function _MOVEMENU()	{
 		mosMenuBar::startTable();
 		mosMenuBar::custom( 'movemenusave', 'move.png', 'move_f2.png', 'Move', false );
 		mosMenuBar::spacer();
@@ -49,7 +49,7 @@ class TOOLBAR_menus {
 	/**
 	* Draws the menu to Move Menut Items
 	*/
-	function _COPYMENU()	{
+	public static function _COPYMENU()	{
 		mosMenuBar::startTable();
 		mosMenuBar::custom( 'copymenusave', 'copy.png', 'copy_f2.png', 'Copy', false );
 		mosMenuBar::spacer();
@@ -62,7 +62,7 @@ class TOOLBAR_menus {
 	/**
 	* Draws the menu to edit a menu item
 	*/
-	function _EDIT() {
+	public static function _EDIT() {
 		global $id;
 
 		if ( !$id ) {
@@ -91,7 +91,7 @@ class TOOLBAR_menus {
 		mosMenuBar::endTable();
 	}
 
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::publishList();
 		mosMenuBar::spacer();

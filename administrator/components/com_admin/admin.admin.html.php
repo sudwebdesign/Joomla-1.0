@@ -24,7 +24,7 @@ class HTML_admin_misc {
 	/**
 	* Control panel
 	*/
-	function controlPanel() {
+	public static function controlPanel() {
 		global $mosConfig_absolute_path, $mainframe;
 		?>
 		<table class="adminheading" border="0">
@@ -649,4 +649,3 @@ function getHelpTOC( $helpsearch ) {
 	asort( $toc );
 	return $toc;
 }
-

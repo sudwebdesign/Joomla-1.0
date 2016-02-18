@@ -18,10 +18,10 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Massmail
 */
 class HTML_Media {
-	function showMedia($dirPath,$listdir ) {
+	public static function showMedia($dirPath,$listdir ) {
 		?>
 		<script language="javascript" type="text/javascript">
-		function dirup(){
+		public static function dirup(){
 			var urlquery=frames['imgManager'].location.search.substring(1);
 			var curdir= urlquery.substring(urlquery.indexOf('listdir=')+8);
 			var listdir=curdir.substring(0,curdir.lastIndexOf('/'));
@@ -29,7 +29,7 @@ class HTML_Media {
 		}
 
 
-		function goUpDir() {
+		public static function goUpDir() {
 			var selection = document.forms[0].dirPath;
 			var dir = selection.options[selection.selectedIndex].value;
 			frames['imgManager'].location.href='index3.php?option=com_media&task=list&listdir=' + dir;
@@ -171,7 +171,7 @@ class HTML_Media {
 	}
 
 
-	function draw_table_header() {
+	public static function draw_table_header() {
 		mosCommonHTML::loadOverlib();
 		?>
 		<script language="javascript" type="text/javascript">
@@ -186,13 +186,13 @@ class HTML_Media {
 		<?php
 	}
 
-	function draw_table_footer() {
+	public static function draw_table_footer() {
 		?>
 		</div>
 		<?php
 	}
 
-	function show_image($img, $file, $info, $size, $listdir) {
+	public static function show_image($img, $file, $info, $size, $listdir) {
 		$img_file 		= basename($img);
 		$img_url_link 	= COM_MEDIA_BASEURL . $listdir . '/' . rawurlencode( $img_file );
 
@@ -257,7 +257,7 @@ class HTML_Media {
 		<?php
 	}
 
-	function show_dir( $path, $dir, $listdir ) {
+	public static function show_dir( $path, $dir, $listdir ) {
 		$count = HTML_Media::num_files( COM_MEDIA_BASE . $listdir . $path );
 
 		$num_files 	= $count[0];
@@ -309,7 +309,7 @@ class HTML_Media {
 		<?php
 	}
 
-	function show_doc($doc, $size, $listdir, $icon) {
+	public static function show_doc($doc, $size, $listdir, $icon) {
 		$size 			= HTML_Media::parse_size( $size );
 		$doc_url_link 	= COM_MEDIA_BASEURL . $listdir  .'/'. rawurlencode( $doc );
 
@@ -336,7 +336,7 @@ class HTML_Media {
 		<?php
 	}
 
-	function parse_size($size){
+	public static function parse_size($size){
 		if($size < 1024) {
 			return $size.' bytes';
 		} else if($size >= 1024 && $size < 1024*1024) {
@@ -346,7 +346,7 @@ class HTML_Media {
 		}
 	}
 
-	function imageResize($width, $height, $target) {
+	public static function imageResize($width, $height, $target) {
 		//takes the larger size of the width and height and applies the
 		//formula accordingly...this is so this script will work
 		//dynamically with any size image
@@ -368,7 +368,7 @@ class HTML_Media {
 
 	}
 
-	function num_files($dir) {
+	public static function num_files($dir) {
 		$total_file 	= 0;
 		$total_dir 		= 0;
 
@@ -391,7 +391,7 @@ class HTML_Media {
 	}
 
 
-	function imageStyle($listdir) {
+	public static function imageStyle($listdir) {
 		?>
 		<script language="javascript" type="text/javascript">
 		function updateDir(){
@@ -404,7 +404,7 @@ class HTML_Media {
 			}
 		}
 
-		function deleteImage(file) {
+		public static function deleteImage(file) {
 			if(confirm("Delete file \""+file+"\"?"))
 			return true;
 

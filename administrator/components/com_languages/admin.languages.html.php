@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_languages {
 
-	function showLanguages( $cur_lang, &$rows, &$pageNav, $option ) {
+	public static function showLanguages( $cur_lang, &$rows, &$pageNav, $option ) {
 		global $my;
 		?>
 		<form action="index2.php" method="post" name="adminForm">

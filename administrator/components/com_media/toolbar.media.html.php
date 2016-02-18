@@ -24,7 +24,7 @@ class TOOLBAR_media {
 	* Draws the menu for a New Media
 	*/
 
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::custom('upload','upload.png','upload_f2.png','Upload',false);
 		mosMenuBar::spacer();

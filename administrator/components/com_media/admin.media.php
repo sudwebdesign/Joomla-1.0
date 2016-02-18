@@ -292,7 +292,7 @@ function listImages($listdir) {
 		while (false !== ($entry = $d->read())) {
 			$img_file = $entry;
 			if(is_file( COM_MEDIA_BASE .$listdir.'/'.$img_file) && substr($entry,0,1) != '.' && strtolower($entry) !== 'index.html' ) {
-				if(preg_match($allowable,$img_file)) {
+				if(preg_match('/' .$allowable.'/',$img_file )) {
 					$image_info 				= @getimagesize( COM_MEDIA_BASE ."/".$listdir.'/'.$img_file);
 					$file_details['file'] 		= COM_MEDIA_BASE . $listdir."/".$img_file;
 					$file_details['img_info'] 	= $image_info;

@@ -25,7 +25,7 @@ class HTML_content {
 	* Draws a Content List
 	* Used by Content Category & Content Section
 	*/
-	function showContentList( $title, &$items, &$access, $id=0, $sectionid=NULL, $gid, &$params, &$pageNav, $other_categories, &$lists, $order, $categories_exist ) {
+	public static function showContentList( $title, &$items, &$access, $id=0, $sectionid=NULL, $gid, &$params, &$pageNav, $other_categories, &$lists, $order, $categories_exist ) {
 		global $Itemid, $mosConfig_live_site;
 
 		if ( $sectionid ) {
@@ -119,7 +119,7 @@ class HTML_content {
 	/**
 	* Display links to categories
 	*/
-	function showCategories( &$params, &$items, $gid, &$other_categories, $catid, $id, $Itemid ) {
+	public static function showCategories( &$params, &$items, $gid, &$other_categories, $catid, $id, $Itemid ) {
 		if(!count($other_categories)) return;
 		?>
 		<ul>
@@ -170,7 +170,7 @@ class HTML_content {
 	/**
 	* Display Table of items
 	*/
-	function showTable( &$params, &$items, &$gid, $catid, $id, &$pageNav, &$access, &$sectionid, &$lists, $order ) {
+	public static function showTable( &$params, &$items, &$gid, $catid, $id, &$pageNav, &$access, &$sectionid, &$lists, $order ) {
 		global $mosConfig_live_site, $Itemid;
 		$link = 'index.php?option=com_content&amp;task=category&amp;sectionid='. $sectionid .'&amp;id='. $catid .'&amp;Itemid='. $Itemid;
 		?>
@@ -376,7 +376,7 @@ class HTML_content {
 	/**
 	* Display links to content items
 	*/
-	function showLinks( &$rows, $links, $total, $i=0, $show=1, $ItemidCount=NULL ) {
+	public static function showLinks( &$rows, $links, $total, $i=0, $show=1, $ItemidCount=NULL ) {
 		global $mainframe, $Itemid;
 
 		// getItemid compatibility mode, holds maintenance version number
@@ -434,7 +434,7 @@ class HTML_content {
 	* @param object An object with the record data
 	* @param boolean If <code>false</code>, the print button links to a popup window.  If <code>true</code> then the print button invokes the browser print method.
 	*/
-	function show( &$row, &$params, &$access, $page=0 ) {
+	public static function show( &$row, &$params, &$access, $page=0 ) {
 		global $mainframe, $hide_js;
 		global $mosConfig_live_site;
 		global $_MAMBOTS;
@@ -558,7 +558,7 @@ class HTML_content {
 	/**
 	* calculate Itemid
 	*/
-	function _Itemid( &$row ) {
+	public static function _Itemid( &$row ) {
 		global $task, $Itemid, $mainframe;
 
 		// getItemid compatibility mode, holds maintenance version number
@@ -583,7 +583,7 @@ class HTML_content {
 	/**
 	* determines the link and `link text` of the readmore button & linked title
 	*/
-	function _linkInfo( &$row, &$params ) {
+	public static function _linkInfo( &$row, &$params ) {
 		global $my;
 
 		$row->link_on 	= '';
@@ -614,7 +614,7 @@ class HTML_content {
 	/**
 	* Writes Title
 	*/
-	function Title( &$row, &$params, &$access ) {
+	public static function Title( &$row, &$params, &$access ) {
 		if ( $params->get( 'item_title' ) ) {
 			if ( $params->get( 'link_titles' ) && $row->link_on != '' ) {
 				?>
@@ -644,7 +644,7 @@ class HTML_content {
 	/**
 	* Writes Edit icon that links to edit page
 	*/
-	function EditIcon( &$row, &$params, &$access ) {
+	public static function EditIcon( &$row, &$params, &$access ) {
 		global $my;
 
 		if ( $params->get( 'popup' ) ) {
@@ -686,7 +686,7 @@ class HTML_content {
 	/**
 	* Writes PDF icon
 	*/
-	function PdfIcon( &$row, &$params, $hide_js ) {
+	public static function PdfIcon( &$row, &$params, $hide_js ) {
 		global $mosConfig_live_site;
 
 		if ( $params->get( 'pdf' ) && !$params->get( 'popup' ) && !$hide_js ) {
@@ -711,7 +711,7 @@ class HTML_content {
 	/**
 	* Writes Email icon
 	*/
-	function EmailIcon( &$row, &$params, $hide_js ) {
+	public static function EmailIcon( &$row, &$params, $hide_js ) {
 		global $mosConfig_live_site, $Itemid, $task;
 
 		if ( $params->get( 'email' ) && !$params->get( 'popup' ) && !$hide_js ) {
@@ -742,7 +742,7 @@ class HTML_content {
 	/**
 	* Writes Container for Section & Category
 	*/
-	function Section_Category( &$row, &$params ) {
+	public static function Section_Category( &$row, &$params ) {
 		if ( $params->get( 'section' ) || $params->get( 'category' ) ) {
 			?>
 			<tr>
@@ -767,7 +767,7 @@ class HTML_content {
 	/**
 	* Writes Section
 	*/
-	function Section( &$row, &$params ) {
+	public static function Section( &$row, &$params ) {
 		if ( $params->get( 'section' ) ) {
 				?>
 				<span>
@@ -786,7 +786,7 @@ class HTML_content {
 	/**
 	* Writes Category
 	*/
-	function Category( &$row, &$params ) {
+	public static function Category( &$row, &$params ) {
 		if ( $params->get( 'category' ) ) {
 			?>
 			<span>
@@ -801,7 +801,7 @@ class HTML_content {
 	/**
 	* Writes Author name
 	*/
-	function Author( &$row, &$params ) {
+	public static function Author( &$row, &$params ) {
 		if ( ( $params->get( 'author' ) ) && ( $row->author != '' ) ) {
 			?>
 			<tr>
@@ -820,7 +820,7 @@ class HTML_content {
 	/**
 	* Writes Create Date
 	*/
-	function CreateDate( &$row, &$params ) {
+	public static function CreateDate( &$row, &$params ) {
 		$create_date = null;
 
 		if ( intval( $row->created ) != 0 ) {
@@ -841,7 +841,7 @@ class HTML_content {
 	/**
 	* Writes URL's
 	*/
-	function URL( &$row, &$params ) {
+	public static function URL( &$row, &$params ) {
 		if ( $params->get( 'url' ) && $row->urls ) {
 			?>
 			<tr>
@@ -857,7 +857,7 @@ class HTML_content {
 	/**
 	* Writes TOC
 	*/
-	function TOC( &$row ) {
+	public static function TOC( &$row ) {
 		if ( isset($row->toc) ) {
 			echo $row->toc;
 		}
@@ -866,7 +866,7 @@ class HTML_content {
 	/**
 	* Writes Modified Date
 	*/
-	function ModifiedDate( &$row, &$params ) {
+	public static function ModifiedDate( &$row, &$params ) {
 		$mod_date = null;
 
 		if ( intval( $row->modified ) != 0) {
@@ -887,7 +887,7 @@ class HTML_content {
 	/**
 	* Writes Readmore Button
 	*/
-	function ReadMore ( &$row, &$params ) {
+	public static function ReadMore ( &$row, &$params ) {
 		if ( $params->get( 'readmore' ) ) {
 			if ( $params->get( 'intro_only' ) && $row->link_text ) {
 				?>
@@ -905,7 +905,7 @@ class HTML_content {
 	/**
 	* Writes Next & Prev navigation button
 	*/
-	function Navigation( &$row, &$params ) {
+	public static function Navigation( &$row, &$params ) {
 		global $task;
 
 		$link_part	= 'index.php?option=com_content&amp;task=view&amp;id=';
@@ -970,7 +970,7 @@ class HTML_content {
 	* @param mosContent The category object
 	* @param string The html for the groups select list
 	*/
-	function editContent( &$row, $section, &$lists, &$images, &$access, $myid, $sectionid, $task, $Itemid ) {
+	public static function editContent( &$row, $section, &$lists, &$images, &$access, $myid, $sectionid, $task, $Itemid ) {
 		global $mosConfig_live_site, $mainframe;
 
 		mosMakeHtmlSafe( $row );
@@ -1002,7 +1002,7 @@ class HTML_content {
 			}
 		}
 		?>
-		function submitbutton(pressbutton) {
+		public static function submitbutton(pressbutton) {
 			var form = document.adminForm;
 			if (pressbutton == 'cancel') {
 				submitform( pressbutton );
@@ -1048,11 +1048,11 @@ class HTML_content {
 			}
 		}
 
-		function setgood(){
+		public static function setgood(){
 			document.adminForm.goodexit.value=1;
 		}
 
-		function WarnUser(){
+		public static function WarnUser(){
 			if (document.adminForm.goodexit.value==0) {
 				alert('<?php echo addslashes( _E_WARNUSER );?>');
 				window.location="<?php echo sefRelToAbs("index.php?option=com_content&task=".$task."&sectionid=".$sectionid."&id=".$row->id."&Itemid=".$Itemid); ?>";
@@ -1418,7 +1418,7 @@ class HTML_content {
 	/**
 	* Writes Email form for filling in the send destination
 	*/
-	function emailForm( $uid, $title, $template='', $itemid ) {
+	public static function emailForm( $uid, $title, $template='', $itemid ) {
 		global $mainframe;
 
 		// used for spoof hardening
@@ -1428,7 +1428,7 @@ class HTML_content {
 		$mainframe->addCustomHeadTag( '<link rel="stylesheet" href="templates/'. $template .'/css/template_css.css" type="text/css" />' );
 		?>
 		<script language="javascript" type="text/javascript">
-		function submitbutton() {
+		public static function submitbutton() {
 			var form = document.frontendForm;
 			// do field validation
 			if (form.email.value == "" || form.youremail.value == "") {
@@ -1505,7 +1505,7 @@ class HTML_content {
 	* @param string Who it was sent to
 	* @param string The current template
 	*/
-	function emailSent( $to, $template='' ) {
+	public static function emailSent( $to, $template='' ) {
 		global $mosConfig_sitename, $mainframe;
 
 		$mainframe->setPageTitle( $mosConfig_sitename );
@@ -1520,4 +1520,3 @@ class HTML_content {
 		<?php
 	}
 }
-

@@ -24,7 +24,7 @@ class HTML_menumanager {
 	/**
 	* Writes a list of the menumanager items
 	*/
-	function show ( $option, $menus, $pageNav ) {
+	public static function show ( $option, $menus, $pageNav ) {
 		global $mosConfig_live_site;
 		?>
 		<script language="javascript" type="text/javascript">

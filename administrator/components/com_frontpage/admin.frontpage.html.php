@@ -24,7 +24,7 @@ class HTML_content {
 	* Writes a list of the content items
 	* @param array An array of content objects
 	*/
-	function showList( &$rows, $search, $pageNav, $option, $lists ) {
+	public static function showList( &$rows, $search, $pageNav, $option, $lists ) {
 		global $my, $acl, $database;
 
 		mosCommonHTML::loadOverlib();

@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Content
 */
 class TOOLBAR_typedcontent {
-	function _EDIT( ) {
+	public static function _EDIT( ) {
 		mosMenuBar::startTable();
 		mosMenuBar::preview( 'contentwindow', true );
 		mosMenuBar::spacer();
@@ -36,7 +36,7 @@ class TOOLBAR_typedcontent {
 		mosMenuBar::endTable();
 	}
 
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::publishList();
 		mosMenuBar::spacer();

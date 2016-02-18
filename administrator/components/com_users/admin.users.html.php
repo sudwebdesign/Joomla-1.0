@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_users {
 
-	function showUsers( &$rows, $pageNav, $search, $option, $lists ) {
+	public static function showUsers( &$rows, $pageNav, $search, $option, $lists ) {
 		?>
 		<form action="index2.php" method="post" name="adminForm">
 

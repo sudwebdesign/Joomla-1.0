@@ -23,7 +23,7 @@ class TOOLBAR_menumanager {
 	/**
 	* Draws the menu for the Menu Manager
 	*/
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::customX( 'copyconfirm', 'copy.png', 'copy_f2.png', 'Copy', true );
 		mosMenuBar::spacer();
@@ -40,7 +40,7 @@ class TOOLBAR_menumanager {
 	/**
 	* Draws the menu to delete a menu
 	*/
-	function _DELETE() {
+	public static function _DELETE() {
 		mosMenuBar::startTable();
 		mosMenuBar::cancel( );
 		mosMenuBar::endTable();
@@ -49,7 +49,7 @@ class TOOLBAR_menumanager {
 	/**
 	* Draws the menu to create a New menu
 	*/
-	function _NEWMENU()	{
+	public static function _NEWMENU()	{
 		mosMenuBar::startTable();
 		mosMenuBar::custom( 'savemenu', 'save.png', 'save_f2.png', 'Save', false );
 		mosMenuBar::spacer();
@@ -62,7 +62,7 @@ class TOOLBAR_menumanager {
 	/**
 	* Draws the menu to create a New menu
 	*/
-	function _COPYMENU()	{
+	public static function _COPYMENU()	{
 		mosMenuBar::startTable();
 		mosMenuBar::custom( 'copymenu', 'copy.png', 'copy_f2.png', 'Copy', false );
 		mosMenuBar::spacer();

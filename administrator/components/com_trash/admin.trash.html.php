@@ -24,7 +24,7 @@ class HTML_trash {
 	/**
 	* Writes a list of the Trash items
 	*/
-	function showList( $option, $content, $pageNav, $list, $catid ) {
+	public static function showList( $option, $content, $pageNav, $list, $catid ) {
 		global $my;
 		?>
 		<script language="javascript" type="text/javascript">

@@ -106,7 +106,7 @@ if (isset( $mainframe->_head['custom'] ))
 			<div align="center" class="smallgrey">
 				<?php echo $version; ?>
 				<br />
-				<a href="http://www.joomla.org/latest10" target="_blank">Check for latest Version</a>
+
 			</div>
 			<?php
 			if ( $mosConfig_debug ) {

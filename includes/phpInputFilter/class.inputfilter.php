@@ -55,6 +55,17 @@ class InputFilter
 		$this->xssAuto		= $xssAuto;
 	}
 
+	function decode($source)
+	{
+		// url decode
+		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
+		// convert decimal
+		$source = str_replace('/&#(\d+);/me', "chr(\\1)", $source); // decimal notation
+		// convert hex
+		$source = str_replace('/&#x([a-f0-9]+);/mei', "chr(0x\\1)", $source); // hex notation
+		return $source;
+	}
+
 	/**
 	 * Method to be called by another php script. Processes for XSS and
 	 * specified bad code.
@@ -449,16 +460,7 @@ class InputFilter
 	 * @param	string	$source
 	 * @return	string	Plaintext string
 	 */
-	function decode($source)
-	{
-		// url decode
-		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
-		// convert decimal
-		$source = preg_replace('/&#(\d+);/me', "chr(\\1)", $source); // decimal notation
-		// convert hex
-		$source = preg_replace('/&#x([a-f0-9]+);/mei', "chr(0x\\1)", $source); // hex notation
-		return $source;
-	}
+
 
 	/**
 	 * Method to be called by another php script. Processes for SQL injection
@@ -548,4 +550,5 @@ class InputFilter
 
 		return $string;
 	}
+}
 }

@@ -25,7 +25,7 @@ class HTML_typedcontent {
 	* Writes a list of the content items
 	* @param array An array of content objects
 	*/
-	function showContent( &$rows, &$pageNav, $option, $search, &$lists ) {
+	public static function showContent( &$rows, &$pageNav, $option, $search, &$lists ) {
 		global $my, $acl, $database;
 
 		mosCommonHTML::loadOverlib();
@@ -246,7 +246,7 @@ class HTML_typedcontent {
 		<?php
 	}
 
-	function edit( &$row, &$images, &$lists, &$params, $option, &$menus ) {
+	public static function edit( &$row, &$images, &$lists, &$params, $option, &$menus ) {
 		global $database;
 
 		mosMakeHtmlSafe( $row );

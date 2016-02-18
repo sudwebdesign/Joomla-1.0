@@ -37,14 +37,14 @@ class mosProfiler {
 	/**
 	 * @return string A format message of the elapsed time
 	 */
-	function mark( $label ) {
+	public static function mark( $label ) {
 		return sprintf ( "\n<div class=\"profiler\">$this->prefix %.3f $label</div>", $this->getmicrotime() - $this->start );
 	}
 
 	/**
 	 * @return float The current time in milliseconds
 	 */
-	function getmicrotime(){
+	public static function getmicrotime(){
 		list($usec, $sec) = explode(" ",microtime());
 		return ((float)$usec + (float)$sec);
 	}
@@ -349,7 +349,7 @@ class mosCache {
 	/**
 	* @return object A function cache object
 	*/
-	function &getCache(  $group=''  ) {
+	public static function &getCache(  $group=''  ) {
 		global $mosConfig_absolute_path, $mosConfig_caching, $mosConfig_cachepath, $mosConfig_cachetime;
 
 		require_once( $mosConfig_absolute_path . '/includes/joomla.cache.php' );
@@ -838,7 +838,7 @@ class mosMainFrame {
             } else {
               $errorlevel = error_reporting();
               error_reporting(0);
-						  $params =& new mosParameters( $my->params, $file, 'component' );
+						  $params = new mosParameters( $my->params, $file, 'component' );
               error_reporting($errorlevel);
             }
 
@@ -1994,7 +1994,7 @@ class mosComponent extends mosDBTable {
 * @package Joomla
 */
 class mosHTML {
-	function makeOption( $value, $text='', $value_name='value', $text_name='text' ) {
+	public static function makeOption( $value, $text='', $value_name='value', $text_name='text' ) {
 		$obj = new stdClass;
 		$obj->$value_name = $value;
 		$obj->$text_name = trim( $text ) ? $text : $value;
@@ -2032,7 +2032,7 @@ class mosHTML {
 	* @param mixed The key that is selected
 	* @returns string HTML for the select list
 	*/
-	function selectList( &$arr, $tag_name, $tag_attribs, $key, $text, $selected=NULL ) {
+	public static function selectList( &$arr, $tag_name, $tag_attribs, $key, $text, $selected=NULL ) {
 		// check if array
 		if ( is_array( $arr ) ) {
 			reset( $arr );
@@ -2189,7 +2189,7 @@ class mosHTML {
 	* @param string The name of the object variable for the option text
 	* @returns string HTML for the select list
 	*/
-	function radioList( &$arr, $tag_name, $tag_attribs, $selected=null, $key='value', $text='text' ) {
+	public static function radioList( &$arr, $tag_name, $tag_attribs, $selected=null, $key='value', $text='text' ) {
 		reset( $arr );
 		$html = "";
 		for ($i=0, $n=count( $arr ); $i < $n; $i++ ) {
@@ -2225,7 +2225,7 @@ class mosHTML {
 	* @param mixed The key that is selected
 	* @returns string HTML for the radio list
 	*/
-	function yesnoRadioList( $tag_name, $tag_attribs, $selected, $yes=_CMN_YES, $no=_CMN_NO ) {
+	public static function yesnoRadioList( $tag_name, $tag_attribs, $selected, $yes=_CMN_YES, $no=_CMN_NO ) {
 		$arr = array(
 			mosHTML::makeOption( '0', $no ),
 			mosHTML::makeOption( '1', $yes )
@@ -2241,7 +2241,7 @@ class mosHTML {
 	* @param string The name of the form element
 	* @return string
 	*/
-	function idBox( $rowNum, $recId, $checkedOut=false, $name='cid' ) {
+	public static function idBox( $rowNum, $recId, $checkedOut=false, $name='cid' ) {
 		if ( $checkedOut ) {
 			return '';
 		} else {
@@ -4462,7 +4462,7 @@ class mosAdminMenus {
 	/**
 	* build the select list for Menu Ordering
 	*/
-	function Ordering( &$row, $id ) {
+	public static function Ordering( &$row, $id ) {
 		global $database;
 
 		if ( $id ) {
@@ -4484,7 +4484,7 @@ class mosAdminMenus {
 	/**
 	* build the select list for access level
 	*/
-	function Access( &$row ) {
+	public static function Access( &$row ) {
 		global $database;
 
 		$query = "SELECT id AS value, name AS text"
@@ -4501,7 +4501,7 @@ class mosAdminMenus {
 	/**
 	* build the select list for parent item
 	*/
-	function Parent( &$row ) {
+	public static function Parent( &$row ) {
 		global $database;
 
 		$id = '';
@@ -4553,7 +4553,7 @@ class mosAdminMenus {
 	/**
 	* build a radio button option for published state
 	*/
-	function Published( &$row ) {
+	public static function Published( &$row ) {
 		$published = mosHTML::yesnoRadioList( 'published', 'class="inputbox"', $row->published );
 		return $published;
 	}
@@ -4561,7 +4561,7 @@ class mosAdminMenus {
 	/**
 	* build the link/url of a menu item
 	*/
-	function Link( &$row, $id, $link=NULL ) {
+	public static function Link( &$row, $id, $link=NULL ) {
 		global $mainframe;
 
 		if ( $id ) {
@@ -4599,7 +4599,7 @@ class mosAdminMenus {
 	/**
 	* build the select list for target window
 	*/
-	function Target( &$row ) {
+	public static function Target( &$row ) {
 		$click[] = mosHTML::makeOption( '0', 'Parent Window With Browser Navigation' );
 		$click[] = mosHTML::makeOption( '1', 'New Window With Browser Navigation' );
 		$click[] = mosHTML::makeOption( '2', 'New Window Without Browser Navigation' );
@@ -4610,7 +4610,7 @@ class mosAdminMenus {
 	/**
 	* build the multiple select list for Menu Links/Pages
 	*/
-	function MenuLinks( &$lookup, $all=NULL, $none=NULL, $unassigned=1 ) {
+	public static function MenuLinks( &$lookup, $all=NULL, $none=NULL, $unassigned=1 ) {
 		global $database;
 
 		// get a list of the menu items
@@ -4700,7 +4700,7 @@ class mosAdminMenus {
 	/**
 	* build the select list to choose a category
 	*/
-	function Category( &$menu, $id, $javascript='' ) {
+	public static function Category( &$menu, $id, $javascript='' ) {
 		global $database;
 
 		$query = "SELECT c.id AS `value`, c.section AS `id`, CONCAT_WS( ' / ', s.title, c.title) AS `text`"
@@ -4730,7 +4730,7 @@ class mosAdminMenus {
 	/**
 	* build the select list to choose a section
 	*/
-	function Section( &$menu, $id, $all=0 ) {
+	public static function Section( &$menu, $id, $all=0 ) {
 		global $database;
 
 		$query = "SELECT s.id AS `value`, s.id AS `id`, s.title AS `text`"
@@ -4764,7 +4764,7 @@ class mosAdminMenus {
 	/**
 	* build the select list to choose a component
 	*/
-	function Component( &$menu, $id ) {
+	public static function Component( &$menu, $id ) {
 		global $database;
 
 		$query = "SELECT c.id AS value, c.name AS text, c.link"
@@ -4792,7 +4792,7 @@ class mosAdminMenus {
 	/**
 	* build the select list to choose a component
 	*/
-	function ComponentName( &$menu, $id ) {
+	public static function ComponentName( &$menu, $id ) {
 		global $database;
 
 		$query = "SELECT c.id AS value, c.name AS text, c.link"
@@ -4816,7 +4816,7 @@ class mosAdminMenus {
 	/**
 	* build the select list to choose an image
 	*/
-	function Images( $name, &$active, $javascript=NULL, $directory=NULL ) {
+	public static function Images( $name, &$active, $javascript=NULL, $directory=NULL ) {
 		global $mosConfig_absolute_path;
 
 		if ( !$directory ) {
@@ -4842,7 +4842,7 @@ class mosAdminMenus {
 	/**
 	* build the select list for Ordering of a specified Table
 	*/
-	function SpecificOrdering( &$row, $id, $query, $neworder=0 ) {
+	public static function SpecificOrdering( &$row, $id, $query, $neworder=0 ) {
 		global $database;
 
 		if ( $neworder ) {
@@ -4863,7 +4863,7 @@ class mosAdminMenus {
 	/**
 	* Select list of active users
 	*/
-	function UserSelect( $name, $active, $nouser=0, $javascript=NULL, $order='name', $reg=1 ) {
+	public static function UserSelect( $name, $active, $nouser=0, $javascript=NULL, $order='name', $reg=1 ) {
 		global $database, $my;
 
 		$and = '';
@@ -4894,7 +4894,7 @@ class mosAdminMenus {
 	/**
 	* Select list of positions - generally used for location of images
 	*/
-	function Positions( $name, $active=NULL, $javascript=NULL, $none=1, $center=1, $left=1, $right=1 ) {
+	public static function Positions( $name, $active=NULL, $javascript=NULL, $none=1, $center=1, $left=1, $right=1 ) {
 		if ( $none ) {
 			$pos[] = mosHTML::makeOption( '', _CMN_NONE );
 		}
@@ -4916,7 +4916,7 @@ class mosAdminMenus {
 	/**
 	* Select list of active categories for components
 	*/
-	function ComponentCategory( $name, $section, $active=NULL, $javascript=NULL, $order='ordering', $size=1, $sel_cat=1 ) {
+	public static function ComponentCategory( $name, $section, $active=NULL, $javascript=NULL, $order='ordering', $size=1, $sel_cat=1 ) {
 		global $database;
 
 		$query = "SELECT id AS value, name AS text"
@@ -4945,7 +4945,7 @@ class mosAdminMenus {
 	/**
 	* Select list of active sections
 	*/
-	function SelectSection( $name, $active=NULL, $javascript=NULL, $order='ordering' ) {
+	public static function SelectSection( $name, $active=NULL, $javascript=NULL, $order='ordering' ) {
 		global $database;
 
 		$categories[] = mosHTML::makeOption( '0', _SEL_SECTION );
@@ -4965,7 +4965,7 @@ class mosAdminMenus {
 	/**
 	* Select list of menu items for a specific menu
 	*/
-	function Links2Menu( $type, $and ) {
+	public static function Links2Menu( $type, $and ) {
 		global $database;
 
 		$query = "SELECT *"
@@ -4986,7 +4986,7 @@ class mosAdminMenus {
 	 * @param string Additional javascript
 	 * @return string A select list
 	 */
-	function MenuSelect( $name='menuselect', $javascript=NULL ) {
+	public static function MenuSelect( $name='menuselect', $javascript=NULL ) {
 		global $database;
 
 		$query = "SELECT params"
@@ -5020,7 +5020,7 @@ class mosAdminMenus {
 	* @param array  Value array of all existing folders
 	* @param array  Value array of all existing images
 	*/
-	function ReadImages( $imagePath, $folderPath, &$folders, &$images ) {
+	public static function ReadImages( $imagePath, $folderPath, &$folders, &$images ) {
 		$imgFiles = mosReadDirectory( $imagePath );
 
 		foreach ($imgFiles as $file) {
@@ -5046,7 +5046,7 @@ class mosAdminMenus {
 	* @param array  Value array of all existing folders
 	* @param array  Value array of all existing images
 	*/
-	function ReadImagesX( &$folders, &$images ) {
+	public static function ReadImagesX( &$folders, &$images ) {
 		global $mosConfig_absolute_path;
 
 		if ( $folders[0]->value != '*0*' ) {
@@ -5071,7 +5071,7 @@ class mosAdminMenus {
 		}
 	}
 
-	function GetImageFolders( &$temps, $path ) {
+	public static function GetImageFolders( &$temps, $path ) {
 		if ( $temps[0]->value != 'None' ) {
 			foreach( $temps as $temp ) {
 				if ( substr( $temp->value, -1, 1 ) != '/' ) {
@@ -5093,7 +5093,7 @@ class mosAdminMenus {
 		return $getfolders;
 	}
 
-	function GetImages( &$images, $path, $base='/' ) {
+	public static function GetImages( &$images, $path, $base='/' ) {
 		if ( is_array($base) && count($base) > 0 ) {
 			if ( $base[0]->value != '/' ) {
 				$base = $base[0]->value .'/';
@@ -5114,7 +5114,7 @@ class mosAdminMenus {
 		return $getimages;
 	}
 
-	function GetSavedImages( &$row, $path ) {
+	public static function GetSavedImages( &$row, $path ) {
 		$images2 = array();
 
 		foreach( $row->images as $file ) {
@@ -5139,7 +5139,7 @@ class mosAdminMenus {
 	* Also can be used in conjunction with the menulist param to create the chosen image
 	* load the default or use no image
 	*/
-	function ImageCheck( $file, $directory='/images/M_images/', $param=NULL, $param_directory='/images/M_images/', $alt=NULL, $name=NULL, $type=1, $align='middle', $title=NULL, $admin=NULL ) {
+	public static function ImageCheck( $file, $directory='/images/M_images/', $param=NULL, $param_directory='/images/M_images/', $alt=NULL, $name=NULL, $type=1, $align='middle', $title=NULL, $admin=NULL ) {
 		global $mosConfig_absolute_path, $mosConfig_live_site, $mainframe;
 
 		$cur_template = $mainframe->getTemplate();
@@ -5186,7 +5186,7 @@ class mosAdminMenus {
 	* Also can be used in conjunction with the menulist param to create the chosen image
 	* load the default or use no image
 	*/
-	function ImageCheckAdmin( $file, $directory='/administrator/images/', $param=NULL, $param_directory='/administrator/images/', $alt=NULL, $name=NULL, $type=1, $align='middle', $title=NULL ) {
+	public static function ImageCheckAdmin( $file, $directory='/administrator/images/', $param=NULL, $param_directory='/administrator/images/', $alt=NULL, $name=NULL, $type=1, $align='middle', $title=NULL ) {
 /*
 		global $mosConfig_absolute_path, $mosConfig_live_site, $mainframe;
 
@@ -5226,7 +5226,7 @@ class mosAdminMenus {
 		return $image;
 	}
 
-	function menutypes() {
+	public static function menutypes() {
 		global $database;
 
 		$query = "SELECT params"
@@ -5294,7 +5294,7 @@ class mosAdminMenus {
 	/*
 	* loads files required for menu items
 	*/
-	function menuItem( $item ) {
+	public static function menuItem( $item ) {
 		global $mosConfig_absolute_path;
 
 		$path = $mosConfig_absolute_path .'/administrator/components/com_menus/'. $item .'/';
@@ -5306,7 +5306,7 @@ class mosAdminMenus {
 
 class mosCommonHTML {
 
-	function ContentLegend( ) {
+	public static function ContentLegend( ) {
 		?>
 		<table cellspacing="0" cellpadding="4" border="0" align="center">
 		<tr align="center">
@@ -5344,7 +5344,7 @@ class mosCommonHTML {
 		<?php
 	}
 
-	function menuLinksContent( &$menus ) {
+	public static function menuLinksContent( &$menus ) {
 		?>
 		<script language="javascript" type="text/javascript">
 		function go2( pressbutton, menu, id ) {
@@ -5430,7 +5430,7 @@ class mosCommonHTML {
 		<?php
 	}
 
-	function menuLinksSecCat( &$menus ) {
+	public static function menuLinksSecCat( &$menus ) {
 		?>
 		<script language="javascript" type="text/javascript">
 		function go2( pressbutton, menu, id ) {
@@ -5517,7 +5517,7 @@ class mosCommonHTML {
 		<?php
 	}
 
-	function checkedOut( &$row, $overlib=1 ) {
+	public static function checkedOut( &$row, $overlib=1 ) {
 		$hover = '';
 		if ( $overlib ) {
 			$date 				= mosFormatDate( $row->checked_out_time, '%A, %d %B %Y' );
@@ -5538,7 +5538,7 @@ class mosCommonHTML {
 	/*
 	* Loads all necessary files for JS Overlib tooltips
 	*/
-	function loadOverlib() {
+	public static function loadOverlib() {
 		global  $mosConfig_live_site, $mainframe;
 
 		if ( !$mainframe->get( 'loadOverlib' ) ) {
@@ -5556,7 +5556,7 @@ class mosCommonHTML {
 	/*
 	* Loads all necessary files for JS Calendar
 	*/
-	function loadCalendar() {
+	public static function loadCalendar() {
 		global  $mosConfig_live_site;
 		?>
 		<link rel="stylesheet" type="text/css" media="all" href="<?php echo $mosConfig_live_site;?>/includes/js/calendar/calendar-mos.css" title="green" />
@@ -5567,7 +5567,7 @@ class mosCommonHTML {
 		<?php
 	}
 
-	function AccessProcessing( &$row, $i ) {
+	public static function AccessProcessing( &$row, $i ) {
 		if ( !$row->access ) {
 			$color_access = 'style="color: green;"';
 			$task_access = 'accessregistered';
@@ -5588,7 +5588,7 @@ class mosCommonHTML {
 		return $href;
 	}
 
-	function CheckedOutProcessing( &$row, $i ) {
+	public static function CheckedOutProcessing( &$row, $i ) {
 		global $my;
 
 		if ( $row->checked_out) {
@@ -5600,7 +5600,7 @@ class mosCommonHTML {
 		return $checked;
 	}
 
-	function PublishedProcessing( &$row, $i ) {
+	public static function PublishedProcessing( &$row, $i ) {
 		$img 	= $row->published ? 'publish_g.png' : 'publish_x.png';
 		$task 	= $row->published ? 'unpublish' : 'publish';
 		$alt 	= $row->published ? 'Published' : 'Unpublished';
@@ -5620,7 +5620,7 @@ class mosCommonHTML {
 	* Added 1.0.8
 	* Static Function
 	*/
-	function newsfeedEncoding( $rssDoc, $text ) {
+	public static function newsfeedEncoding( $rssDoc, $text ) {
 		if (!defined( '_JOS_FEED_ENCODING' )) {
 		// determine encoding of feed
 			$feed 			= $rssDoc->toNormalizedString(true);

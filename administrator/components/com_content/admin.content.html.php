@@ -25,7 +25,7 @@ class HTML_content {
 	* Writes a list of the content items
 	* @param array An array of content objects
 	*/
-	function showContent( &$rows, $section, &$lists, $search, $pageNav, $all=NULL, $redirect ) {
+	public static function showContent( &$rows, $section, &$lists, $search, $pageNav, $all=NULL, $redirect ) {
 		global $my, $acl, $database, $mosConfig_offset;
 
 		mosCommonHTML::loadOverlib();
@@ -294,12 +294,12 @@ class HTML_content {
 	* Writes a list of the content items
 	* @param array An array of content objects
 	*/
-	function showArchive( &$rows, $section, &$lists, $search, $pageNav, $option, $all=NULL, $redirect ) {
+	public static function showArchive( &$rows, $section, &$lists, $search, $pageNav, $option, $all=NULL, $redirect ) {
 		global $my, $acl;
 
 		?>
 		<script language="javascript" type="text/javascript">
-		function submitbutton(pressbutton) {
+		public static function submitbutton(pressbutton) {
 			if (pressbutton == 'remove') {
 				if (document.adminForm.boxchecked.value == 0) {
 					alert('Please make a selection from the list to send to Trash');
@@ -459,7 +459,7 @@ class HTML_content {
 	* @param mosContent The category object
 	* @param string The html for the groups select list
 	*/
-	function editContent( &$row, $section, &$lists, &$sectioncategories, &$images, &$params, $option, $redirect, &$menus ) {
+	public static function editContent( &$row, $section, &$lists, &$sectioncategories, &$images, &$params, $option, $redirect, &$menus ) {
 		global $database;
 
 		mosMakeHtmlSafe( $row );
@@ -509,7 +509,7 @@ class HTML_content {
 		}
 		?>
 
-		function submitbutton(pressbutton) {
+		public static function submitbutton(pressbutton) {
 			var form = document.adminForm;
 
 			if ( pressbutton == 'menulink' ) {
@@ -1080,7 +1080,7 @@ class HTML_content {
 	* @param int The current section we are looking at
 	* @param array The list of sections and categories to move to
 	*/
-	function moveSection( $cid, $sectCatList, $option, $sectionid, $items ) {
+	public static function moveSection( $cid, $sectCatList, $option, $sectionid, $items ) {
 		?>
 		<script language="javascript" type="text/javascript">
 		function submitbutton(pressbutton) {
@@ -1151,7 +1151,7 @@ class HTML_content {
 	/**
 	* Form to select Section/Category to copys item(s) to
 	*/
-	function copySection( $option, $cid, $sectCatList, $sectionid, $items  ) {
+	public static function copySection( $option, $cid, $sectCatList, $sectionid, $items  ) {
 		?>
 		<script language="javascript" type="text/javascript">
 		function submitbutton(pressbutton) {

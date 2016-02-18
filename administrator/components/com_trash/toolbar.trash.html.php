@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Trash
 */
 class TOOLBAR_Trash {
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::custom('restoreconfirm','restore.png','restore_f2.png','Restore', true);
 		mosMenuBar::spacer();
@@ -30,13 +30,13 @@ class TOOLBAR_Trash {
 		mosMenuBar::endTable();
 	}
 
-	function _DELETE() {
+	public static function _DELETE() {
 		mosMenuBar::startTable();
 		mosMenuBar::cancel();
 		mosMenuBar::endTable();
 	}
 
-	function _SETTINGS() {
+	public static function _SETTINGS() {
 		mosMenuBar::startTable();
 		mosMenuBar::back();
 		mosMenuBar::spacer();

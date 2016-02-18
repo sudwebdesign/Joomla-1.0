@@ -22,9 +22,9 @@ class modules_html {
 	/*
 	* Output Handling for Custom modules
 	*/
-	function module( &$module, &$params, $Itemid, $style=0 ) {
+	public static function module( &$module, &$params, $Itemid, $style=0 ) {
 		global $_MAMBOTS;
-		
+
 		// custom module params
 		$moduleclass_sfx 	= $params->get( 'moduleclass_sfx' );
 		$rssurl 			= $params->get( 'rssurl' );
@@ -39,15 +39,15 @@ class modules_html {
 		// mambot handling for custom modules
 			// load content bots
 			$_MAMBOTS->loadBotGroup( 'content' );
-			
+
 			$row		= $module;
 			$row->text 	= $module->content;
-			
+
 			$results	= $_MAMBOTS->trigger( 'onPrepareContent', array( &$row, &$params, 0 ), true );
-			
+
 			$module->content = $row->text;
 		}
-		
+
 		switch ( $style ) {
 			case -3:
 			// allows for rounded corners
@@ -70,7 +70,7 @@ class modules_html {
 				break;
 		}
 
-		
+
 	}
 
 	/**
@@ -80,7 +80,7 @@ class modules_html {
 	* @param int The menu item ID
 	* @param int -1=show without wrapper and title, -2=xhtml style
 	*/
-	function module2( &$module, &$params, $Itemid, $style=0, $count=0 ) {
+	public static function module2( &$module, &$params, $Itemid, $style=0, $count=0 ) {
 		global $mosConfig_lang, $mosConfig_absolute_path;
 
 		$moduleclass_sfx = $params->get( 'moduleclass_sfx' );
@@ -125,16 +125,16 @@ class modules_html {
 	}
 
 	// feed output
-	function modoutput_feed( &$module, &$params, $moduleclass_sfx ) {
+	public static function modoutput_feed( &$module, &$params, $moduleclass_sfx ) {
 		global $mosConfig_absolute_path, $mosConfig_cachepath;
 
 		// check if cache directory is writeable
-		$cacheDir 		= $mosConfig_cachepath .'/';	
-		if ( !is_writable( $cacheDir ) ) {	
+		$cacheDir 		= $mosConfig_cachepath .'/';
+		if ( !is_writable( $cacheDir ) ) {
 			$module->content = 'Cache Directory Unwriteable';
 			return;
 		}
-		
+
 		$rssurl 			= $params->get( 'rssurl' );
 		$rssitems 			= $params->get( 'rssitems', 5 );
 		$rssdesc 			= $params->get( 'rssdesc', 1 );
@@ -145,19 +145,19 @@ class modules_html {
 		$rsscache			= $params->get( 'rsscache', 3600 );
 
 		$contentBuffer	= '';
-		
+
 		$LitePath 		= $mosConfig_absolute_path .'/includes/Cache/Lite.php';
 		require_once( $mosConfig_absolute_path .'/includes/domit/xml_domit_rss.php' );
-		
+
 		$rssDoc = new xml_domit_rss_document();
 		$rssDoc->setRSSTimeout(2);
 		$rssDoc->useCacheLite(true, $LitePath, $cacheDir, $rsscache);
 		$success = $rssDoc->loadRSS( $rssurl );
 
-		if ( $success )	{		
+		if ( $success )	{
 			$content_buffer = '';
 			$totalChannels 	= $rssDoc->getChannelCount();
-	
+
 			for ( $i = 0; $i < $totalChannels; $i++ ) {
 				$currChannel =& $rssDoc->getChannel($i);
 				$elements 	= $currChannel->getElementList();
@@ -170,10 +170,10 @@ class modules_html {
 						$iTitle	= $image->getTitle();
 					}
 				}
-	
+
 				// feed title
 				$content_buffer = '<table cellpadding="0" cellspacing="0" class="moduletable'.$moduleclass_sfx.'">' . "\n";
-							
+
 				if ( $currChannel->getTitle() && $rsstitle ) {
 					$feed_title 	= $currChannel->getTitle();
 					$feed_title 	= mosCommonHTML::newsfeedEncoding( $rssDoc, $feed_title );
@@ -186,21 +186,21 @@ class modules_html {
 					$content_buffer .= "		</strong>\n";
 					$content_buffer .= "	</td>\n";
 					$content_buffer .= "</tr>\n";
-	
+
 				}
-	
+
 				// feed description
 				if ( $rssdesc ) {
 					$feed_descrip 	= $currChannel->getDescription();
 					$feed_descrip 	= mosCommonHTML::newsfeedEncoding( $rssDoc, $feed_descrip );
-					
+
 					$content_buffer .= "<tr>\n";
 					$content_buffer .= "	<td>\n";
 					$content_buffer .= $feed_descrip;
 					$content_buffer .= "	</td>\n";
 					$content_buffer .= "</tr>\n";
 				}
-	
+
 				// feed image
 				if ( $rssimage && $iUrl ) {
 					$content_buffer .= "<tr>\n";
@@ -209,28 +209,28 @@ class modules_html {
 					$content_buffer .= "	</td>\n";
 					$content_buffer .= "</tr>\n";
 				}
-	
+
 				$actualItems 	= $currChannel->getItemCount();
 				$setItems 		= $rssitems;
-	
+
 				if ($setItems > $actualItems) {
 					$totalItems = $actualItems;
 				} else {
 					$totalItems = $setItems;
 				}
-	
-	
+
+
 				$content_buffer .= "<tr>\n";
 				$content_buffer .= "	<td>\n";
 				$content_buffer .= "		<ul class=\"newsfeed" . $moduleclass_sfx . "\">\n";
-	
+
 						for ($j = 0; $j < $totalItems; $j++) {
 							$currItem =& $currChannel->getItem($j);
 							// item title
-							
+
 							$item_title = $currItem->getTitle();
 							$item_title = mosCommonHTML::newsfeedEncoding( $rssDoc, $item_title );
-	
+
 							// START fix for RSS enclosure tag url not showing
 							$content_buffer .= "<li class=\"newsfeed" . $moduleclass_sfx . "\">\n";
 							$content_buffer .= "	<strong>\n";
@@ -251,7 +251,7 @@ class modules_html {
 							}
 							$content_buffer .= "	</strong>\n";
 							// END fix for RSS enclosure tag url not showing
-							
+
 								// item description
 								if ( $rssitemdesc ) {
 									// item description
@@ -270,11 +270,11 @@ class modules_html {
 											$text .= '...';
 										}
 									}
-	
+
 									$content_buffer .= "     <div>\n";
 									$content_buffer .= "        " . $text;
 									$content_buffer .= "		</div>\n";
-	
+
 								}
 							$content_buffer .= "</li>\n";
 						}
@@ -290,7 +290,7 @@ class modules_html {
 	/*
 	* standard tabled output
 	*/
-	function modoutput_table( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
+	public static function modoutput_table( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
 		global $mosConfig_live_site, $mosConfig_sitename, $mosConfig_lang, $mosConfig_absolute_path;
 		global $mainframe, $database, $my;
 		?>
@@ -313,7 +313,7 @@ class modules_html {
 					modules_html::CustomContent( $module, $params);
 				} else {
 					include( $mosConfig_absolute_path . '/modules/' . $module->module . '.php' );
-					
+
 					if (isset( $content)) {
 						echo $content;
 					}
@@ -328,7 +328,7 @@ class modules_html {
 	/*
 	* show a naked module - no wrapper and no title
 	*/
-	function modoutput_naked( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
+	public static function modoutput_naked( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
 		global $mosConfig_live_site, $mosConfig_sitename, $mosConfig_lang, $mosConfig_absolute_path;
 		global $mainframe, $database, $my;
 
@@ -336,7 +336,7 @@ class modules_html {
 			modules_html::CustomContent( $module, $params);
 		} else {
 			include( $mosConfig_absolute_path . '/modules/' . $module->module . '.php' );
-			
+
 			if (isset( $content)) {
 				echo $content;
 			}
@@ -346,7 +346,7 @@ class modules_html {
 	/*
 	* xhtml (divs and font headder tags)
 	*/
-	function modoutput_xhtml( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
+	public static function modoutput_xhtml( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
 		global $mosConfig_live_site, $mosConfig_sitename, $mosConfig_lang, $mosConfig_absolute_path;
 		global $mainframe, $database, $my;
 		?>
@@ -365,7 +365,7 @@ class modules_html {
 				modules_html::CustomContent( $module, $params);
 			} else {
 				include( $mosConfig_absolute_path . '/modules/' . $module->module . '.php' );
-				
+
 				if (isset( $content)) {
 					echo $content;
 				}
@@ -378,7 +378,7 @@ class modules_html {
 	/*
 	* allows for rounded corners
 	*/
-	function modoutput_rounded( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
+	public static function modoutput_rounded( $module, $params, $Itemid, $moduleclass_sfx, $type=0 ) {
 		global $mosConfig_live_site, $mosConfig_sitename, $mosConfig_lang, $mosConfig_absolute_path;
 		global $mainframe, $database, $my;
 		?>
@@ -395,7 +395,7 @@ class modules_html {
 							modules_html::CustomContent( $module, $params);
 						} else {
 							include( $mosConfig_absolute_path . '/modules/' . $module->module . '.php' );
-							
+
 							if (isset( $content)) {
 								echo $content;
 							}
@@ -407,29 +407,29 @@ class modules_html {
 		</div>
 		<?php
 	}
-	
-	function CustomContent( &$module, $params) {
+
+	public static function CustomContent( &$module, $params) {
 		global $_MAMBOTS;
-		
+
 		$firebots 			= $params->get( 'firebots', 0 );
-		
+
 		if ( $firebots ) {
 			$row		= $module;
-			$row->text	= $module->content;		
-		
+			$row->text	= $module->content;
+
 			$results = $_MAMBOTS->trigger( 'onBeforeDisplayContent', array( &$row, &$params, 0 ) );
 			echo trim( implode( "\n", $results ) );
-			
+
 			$module->content = $row->text;
 		}
-		
+
 		// output custom module contents
 		echo $module->content;
-		
+
 		if ( $firebots ) {
 			$results = $_MAMBOTS->trigger( 'onAfterDisplayContent', array( &$row, &$params, 0 ) );
 			echo trim( implode( "\n", $results ) );
-			
+
 			$module->content = $row->text;
 		}
 	}

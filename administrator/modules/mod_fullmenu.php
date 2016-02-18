@@ -27,7 +27,7 @@ if (!defined( '_JOS_FULLMENU_MODULE' )) {
 		* Show the menu
 		* @param string The current user type
 		*/
-		function show( $usertype='' ) {
+		public static function show( $usertype='' ) {
 			global $acl, $database;
 			global $mosConfig_live_site, $mosConfig_enable_stats, $mosConfig_caching;
 
@@ -315,7 +315,7 @@ if (!defined( '_JOS_FULLMENU_MODULE' )) {
 		* Show an disbaled version of the menu, used in edit pages
 		* @param string The current user type
 		*/
-		function showDisabled( $usertype='' ) {
+		public static function showDisabled( $usertype='' ) {
 			global $acl;
 
 			$canConfig 			= $acl->acl_check( 'administration', 'config', 'users', $usertype );

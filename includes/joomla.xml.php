@@ -94,7 +94,7 @@ class mosParameters {
 * @param boolean add an associative index for each section [in brackets]
 * @return object
 */
-	function parse( $txt, $process_sections = false, $asArray = false ) {
+	public static function parse( $txt, $process_sections = false, $asArray = false ) {
 		if (is_string( $txt )) {
 			$lines = explode( "\n", $txt );
 		} else if (is_array( $txt )) {

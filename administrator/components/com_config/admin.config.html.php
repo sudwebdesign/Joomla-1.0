@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_config {
 
-	function showconfig( &$row, &$lists, $option) {
+	public static function showconfig( &$row, &$lists, $option) {
 		global $mosConfig_absolute_path, $mosConfig_live_site, $mosConfig_session_type, $mainframe;
 
 		$tabs = new mosTabs(0);

@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Config
 */
 class TOOLBAR_config {
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::save();
 		mosMenuBar::spacer();

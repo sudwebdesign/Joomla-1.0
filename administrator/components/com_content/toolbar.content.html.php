@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Content
 */
 class TOOLBAR_content {
-	function _EDIT() {
+	public static function _EDIT() {
 		global $id;
 
 		mosMenuBar::startTable();
@@ -43,7 +43,7 @@ class TOOLBAR_content {
 		mosMenuBar::endTable();
 	}
 
-	function _ARCHIVE() {
+	public static function _ARCHIVE() {
 		mosMenuBar::startTable();
 		mosMenuBar::unarchiveList();
 		mosMenuBar::spacer();
@@ -53,7 +53,7 @@ class TOOLBAR_content {
 		mosMenuBar::endTable();
 	}
 
-	function _MOVE() {
+	public static function _MOVE() {
 		mosMenuBar::startTable();
 		mosMenuBar::custom( 'movesectsave', 'save.png', 'save_f2.png', 'Save', false );
 		mosMenuBar::spacer();
@@ -61,7 +61,7 @@ class TOOLBAR_content {
 		mosMenuBar::endTable();
 	}
 
-	function _COPY() {
+	public static function _COPY() {
 		mosMenuBar::startTable();
 		mosMenuBar::custom( 'copysave', 'save.png', 'save_f2.png', 'Save', false );
 		mosMenuBar::spacer();
@@ -69,7 +69,7 @@ class TOOLBAR_content {
 		mosMenuBar::endTable();
 	}
 
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::archiveList();
 		mosMenuBar::spacer();
