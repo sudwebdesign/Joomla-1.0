@@ -78,7 +78,7 @@ class mosWeblink extends mosDBTable {
 			return false;
 		}
 
-		if(!(preg_match('/http:\/\//i',$this->url) || (preg_match('/https:\/\//i',$this->url)) || (preg_match('/ftp:\/\//i',
+		if ( !( preg_match( 'http://', $this->url ) || ( preg_match( 'https://',$this->url ) )  || ( preg_match( 'ftp://',$this->url ) ) ) ) {
 			$this->url = 'http://'.$this->url;
 		}
 
@@ -98,3 +98,5 @@ class mosWeblink extends mosDBTable {
 		return true;
 	}
 }
+
+

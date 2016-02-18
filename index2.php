@@ -133,7 +133,7 @@ if ( $no_html == 0 ) {
 		require( $customIndex2 );
 	} else {
 		// needed to seperate the ISO number from the language file constant _ISO
-		$iso = split( '=', _ISO );
+		$iso = explode( '=', _ISO );
 		// xml prolog
 		echo '<?xml version="1.0" encoding="'. $iso[1] .'"?' .'>';
 	?>

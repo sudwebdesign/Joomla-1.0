@@ -14,7 +14,7 @@
 // no direct access
 defined( '_VALID_MOS' ) or die( 'Restricted access' );
 
-function pathwayMakeLink( $id, $name, $link, $parent ) {
+ function pathwayMakeLink( $id, $name, $link, $parent ) {
 	$mitem = new stdClass();
 	$mitem->id 		= $id;
 	$mitem->name 	= html_entity_decode( $name );
@@ -30,7 +30,7 @@ function pathwayMakeLink( $id, $name, $link, $parent ) {
 * @param database A database connector object
 * @param int The db id field value of the current menu item
 */
-function showPathway( $Itemid ) {
+ function showPathway( $Itemid ) {
 	global $database, $option, $task, $mainframe, $mosConfig_absolute_path, $mosConfig_live_site, $my;
 
 	// the the whole menu array and index the array by the id
@@ -276,10 +276,10 @@ function showPathway( $Itemid ) {
 		}
 	}
 
-	while ($i--) {
-		if(!$mid || empty($mitems[$mid]) || $Itemid == $home_menu->id || !preg_match("/option/i",
-			break;
-		}
+	 while ($i--) {
+		 if (!$mid || empty( $mitems[$mid] ) || $Itemid == $home_menu->id || !preg_match("option", $optionstring)) {
+			 break;
+		 }
 		$item =& $mitems[$mid];
 
 		$itemname = stripslashes( $item->name );

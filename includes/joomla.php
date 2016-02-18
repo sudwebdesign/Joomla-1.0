@@ -366,7 +366,7 @@ class mosCache {
 	/**
 	* Cleans the cache
 	*/
-	function cleanCache( $group=false ) {
+	public static function cleanCache( $group=false ) {
 		global $mosConfig_caching;
 		if ($mosConfig_caching) {
 			$cache =& mosCache::getCache( $group );
@@ -431,7 +431,7 @@ class mosMainFrame {
 	}
 
 	/**
-	 * Gets the id number for a client
+	 * @Gets the id number for a client
 	 * @param mixed A client identifier
 	 */
 	function getClientID( $client ) {
@@ -912,7 +912,7 @@ class mosMainFrame {
 	* Added as of 1.0.8
 	* Deprecated 1.1
 	*/
-	function sessionCookieName() {
+	public static function sessionCookieName() {
 		global $mainframe, $mosConfig_live_site;
 
 		if( substr( $mosConfig_live_site, 0, 7 ) == 'http://' ) {
@@ -2001,7 +2001,7 @@ class mosHTML {
 		return $obj;
 	}
 
-  function writableCell( $folder, $relative=1, $text='', $visible=1 ) {
+  public static function writableCell( $folder, $relative=1, $text='', $visible=1 ) {
 	$writeable 		= '<b><font color="green">Writeable</font></b>';
 	$unwriteable 	= '<b><font color="red">Unwriteable</font></b>';
 
@@ -2077,7 +2077,7 @@ class mosHTML {
 	* @param string The printf format to be applied to the number
 	* @returns string HTML for the select list
 	*/
-	function integerSelectList( $start, $end, $inc, $tag_name, $tag_attribs, $selected, $format="" ) {
+	public static function integerSelectList( $start, $end, $inc, $tag_name, $tag_attribs, $selected, $format="" ) {
 		$start 	= intval( $start );
 		$end 	= intval( $end );
 		$inc 	= intval( $inc );
@@ -2098,7 +2098,7 @@ class mosHTML {
 	* @param mixed The key that is selected
 	* @returns string HTML for the select list values
 	*/
-	function monthSelectList( $tag_name, $tag_attribs, $selected ) {
+public static function monthSelectList( $tag_name, $tag_attribs, $selected ) {
 		$arr = array(
 			mosHTML::makeOption( '01', _JAN ),
 			mosHTML::makeOption( '02', _FEB ),
@@ -2130,7 +2130,7 @@ class mosHTML {
 	* @param mixed The key that is selected
 	* @returns string HTML for the select list
 	*/
-	function treeSelectList( &$src_list, $src_id, $tgt_list, $tag_name, $tag_attribs, $key, $text, $selected ) {
+	public static function treeSelectList( &$src_list, $src_id, $tgt_list, $tag_name, $tag_attribs, $key, $text, $selected ) {
 
 		// establish the hierarchy of the menu
 		$children = array();
@@ -2170,7 +2170,7 @@ class mosHTML {
 	* @param mixed The key that is selected
 	* @returns string HTML for the select list values
 	*/
-	function yesnoSelectList( $tag_name, $tag_attribs, $selected, $yes=_CMN_YES, $no=_CMN_NO ) {
+	public static function yesnoSelectList( $tag_name, $tag_attribs, $selected, $yes=_CMN_YES, $no=_CMN_NO ) {
 		$arr = array(
 		mosHTML::makeOption( '0', $no ),
 		mosHTML::makeOption( '1', $yes ),
@@ -2249,7 +2249,7 @@ class mosHTML {
 		}
 	}
 
-	function sortIcon( $base_href, $field, $state='none' ) {
+	public static function sortIcon( $base_href, $field, $state='none' ) {
 		global $mosConfig_live_site;
 
 		$alts = array(
@@ -2273,7 +2273,7 @@ class mosHTML {
 	/**
 	* Writes Close Button
 	*/
-	function CloseButton ( &$params, $hide_js=NULL ) {
+	public static function CloseButton ( &$params, $hide_js=NULL ) {
 		// displays close button in Pop-up window
 		if ( $params->get( 'popup' ) && !$hide_js ) {
 			?>
@@ -2291,7 +2291,7 @@ class mosHTML {
 	/**
 	* Writes Back Button
 	*/
-	function BackButton ( &$params, $hide_js=NULL ) {
+	public static function BackButton ( &$params, $hide_js=NULL ) {
 		// Back Button
 		if ( $params->get( 'back_button' ) && !$params->get( 'popup' ) && !$hide_js) {
 			?>
@@ -2306,7 +2306,7 @@ class mosHTML {
 	/**
 	* Cleans text of all formating and scripting code
 	*/
-	function cleanText ( &$text ) {
+	public static function cleanText ( &$text ) {
 		$text = preg_replace( "'<script[^>]*>.*?</script>'si", '', $text );
 		$text = preg_replace( '/<a\s+.*?href="([^"]+)"[^>]*>([^<]+)<\/a>/is', '\2 (\1)', $text );
 		$text = preg_replace( '/<!--.+?-->/', '', $text );
@@ -2323,7 +2323,7 @@ class mosHTML {
 	/**
 	* Writes Print icon
 	*/
-	function PrintIcon( &$row, &$params, $hide_js, $link, $status=NULL ) {
+	public static function PrintIcon( &$row, &$params, $hide_js, $link, $status=NULL ) {
 		if ( $params->get( 'print' )  && !$hide_js ) {
 			// use default settings if none declared
 			if ( !$status ) {
@@ -4574,7 +4574,7 @@ class mosAdminMenus {
 					if ( $params->get( 'unique_itemid' ) ) {
 						$row->link .= '&Itemid='. $row->id;
 					} else {
-						$temp = split( '&task=view&id=', $row->link);
+						$temp = explode( '&task=view&id=', $row->link);
 						$row->link .= '&Itemid='. $mainframe->getItemid($temp[1], 0, 0);
 					}
 

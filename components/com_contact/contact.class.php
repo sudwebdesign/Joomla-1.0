@@ -99,21 +99,21 @@ class MambovCard extends vCard {
 	function setAddress( $postoffice='', $extended='', $street='', $city='', $region='', $zip='', $country='', $type='HOME;POSTAL' ) {
 		// $type may be DOM | INTL | POSTAL | PARCEL | HOME | WORK or any combination of these: e.g. "WORK;PARCEL;POSTAL"
 		$separator 	= ';';
-		
+
 		$key 		= 'ADR';
 		if ( $type != '' ) {
 			$key	.= $separator . $type;
 		}
 		$key.= ';ENCODING=QUOTED-PRINTABLE';
-		
-		$return = encode( $postoffice ); 
+
+		$return = encode( $postoffice );
 		$return .= $separator . encode( $extended );
 		$return .= $separator . encode( $street );
 		$return .= $separator . encode( $city );
 		$return .= $separator . encode( $region);
 		$return .= $separator . encode( $zip );
 		$return .= $separator . encode( $country );
-		
+
 		$this->properties[$key] = $return;
 	}
 

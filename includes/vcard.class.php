@@ -183,22 +183,22 @@ class vCard {
 		$this->properties[$key] = $url;
 	}
 
-	function getVCard() {
-		$text = 'BEGIN:VCARD';
-		$text.= "\r\n";
-		$text.= 'VERSION:2.1';
-		$text.= "\r\n";
+	function getVCard( $sitename ) {
+		$text 	= 'BEGIN:VCARD';
+		$text	.= "\r\n";
+		$text 	.= 'VERSION:2.1';
+		$text	.= "\r\n";
 
-		foreach($this->properties as $key => $value) {
-			$text.= "$key:$value\r\n";
+		foreach( $this->properties as $key => $value ) {
+			$text	.= "$key:$value";
+			$text	.= "\r\n";
 		}
-		
-		$text.= 'REV:'. date('Y-m-d') .'T'. date('H:i:s') .'Z';
-		$text.= "\r\n";
-		$text.= 'MAILER:PHP vCard class by Kai Blankenhorn';
-		$text.= "\r\n";
-		$text.= 'END:VCARD';
-		$text.= "\r\n";
+		$text	.= 'REV:'. date( 'Y-m-d' ) .'T'. date( 'H:i:s' ). 'Z';
+		$text	.= "\r\n";
+		$text	.= 'MAILER: Joomla! vCard for '. $sitename;
+		$text	.= "\r\n";
+		$text	.= 'END:VCARD';
+		$text	.= "\r\n";
 
 		return $text;
 	}
@@ -207,3 +207,4 @@ class vCard {
 		return $this->filename;
 	}
 }
+

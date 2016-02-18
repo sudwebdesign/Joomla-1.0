@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class search_html {
 
-	function openhtml( $params ) {
+	public static function openhtml( $params ) {
 		if ( $params->get( 'page_title' ) ) {
 			?>
 			<div class="componentheading<?php echo $params->get( 'pageclass_sfx' ); ?>">
@@ -31,7 +31,7 @@ class search_html {
 		}
 	}
 
-	function searchbox( $searchword, &$lists, $params ) {
+	public static function searchbox( $searchword, &$lists, $params ) {
 		global $Itemid;
 		?>
 		<form action="index.php" method="get">
@@ -69,7 +69,7 @@ class search_html {
 		<?php
 	}
 
-	function searchintro( $searchword, $params ) {
+	public static function searchintro( $searchword, $params ) {
 		?>
 		<table class="searchintro<?php echo $params->get( 'pageclass_sfx' ); ?>">
 		<tr>
@@ -78,7 +78,7 @@ class search_html {
 		<?php
 	}
 
-	function message( $message, $params ) {
+	public static function message( $message, $params ) {
 		?>
 		<table class="searchintro<?php echo $params->get( 'pageclass_sfx' ); ?>">
 		<tr>
@@ -90,14 +90,14 @@ class search_html {
 		<?php
 	}
 
-	function displaynoresult() {
+public static function displaynoresult() {
 		?>
 			</td>
 		</tr>
 		<?php
 	}
 
-	function display( &$rows, $params, $pageNav, $limitstart, $limit, $total, $totalRows, $searchword ) {
+	public static function display( &$rows, $params, $pageNav, $limitstart, $limit, $total, $totalRows, $searchword ) {
 		global $mosConfig_hideCreateDate;
 		global $mosConfig_live_site, $option, $Itemid;
 
@@ -210,7 +210,7 @@ class search_html {
 		<?php
 	}
 
-	function conclusion( $searchword, $pageNav ) {
+	public static function conclusion( $searchword, $pageNav ) {
 		global $mosConfig_live_site, $option, $Itemid;
 
 		$ordering 		= strtolower( strval( mosGetParam( $_REQUEST, 'ordering', 'newest' ) ) );

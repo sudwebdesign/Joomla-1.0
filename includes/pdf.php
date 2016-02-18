@@ -122,7 +122,7 @@ function dofreePDF() {
 
 function decodeHTML( $string ) {
 	$string = strtr( $string, array_flip(get_html_translation_table( HTML_ENTITIES ) ) );
-	$string = preg_replace( "/&#([0-9]+);/me", "chr('\\1')", $string );
+	$string = str_replace( "/&#([0-9]+);/me", "chr('\\1')", $string );
 	
 	return $string;
 }

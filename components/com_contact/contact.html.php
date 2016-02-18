@@ -23,7 +23,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 class HTML_contact {
 
 
-	function displaylist( &$categories, &$rows, $catid, $currentcat=NULL, &$params, $tabclass ) {
+	public static function displaylist( &$categories, &$rows, $catid, $currentcat=NULL, &$params, $tabclass ) {
 		global $Itemid, $mosConfig_live_site, $hide_js;
 
 		if ( $params->get( 'page_title' ) ) {
@@ -84,7 +84,7 @@ class HTML_contact {
 	/**
 	* Display Table of items
 	*/
-	function showTable( &$params, &$rows, $catid, $tabclass ) {
+public static function showTable( &$params, &$rows, $catid, $tabclass ) {
 		global $mosConfig_live_site, $Itemid;
 		?>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -195,7 +195,7 @@ class HTML_contact {
 	/**
 	* Display links to categories
 	*/
-	function showCategories( &$params, &$categories, $catid ) {
+public static function showCategories( &$params, &$categories, $catid ) {
 		global $mosConfig_live_site, $Itemid;
 		?>
 		<ul>
@@ -246,7 +246,7 @@ class HTML_contact {
 	}
 
 
-	function viewcontact( &$contact, &$params, $count, &$list, &$menu_params ) {
+public static function viewcontact( &$contact, &$params, $count, &$list, &$menu_params ) {
 		global $mosConfig_live_site;
 		global $mainframe, $Itemid;
 
@@ -360,7 +360,7 @@ class HTML_contact {
 	/**
 	* Writes Page Title
 	*/
-	function _writePageTitle( &$params, &$menu_params ) {
+public static function _writePageTitle( &$params, &$menu_params ) {
 		if ( $params->get( 'page_title' )  && !$params->get( 'popup' ) ) {
 			?>
 			<tr>
@@ -375,7 +375,7 @@ class HTML_contact {
 	/**
 	* Writes Dropdown box to select contact
 	*/
-	function _writeSelectContact( &$contact, &$params, $count ) {
+public static function _writeSelectContact( &$contact, &$params, $count ) {
 		if ( ( $count > 1 )  && !$params->get( 'popup' ) && $params->get( 'drop_down' ) ) {
 			global $Itemid;
 			?>
@@ -396,7 +396,7 @@ class HTML_contact {
 	/**
 	* Writes Name & Position
 	*/
-	function _writeContactName( &$contact, &$params, &$menu_params ) {
+public static function _writeContactName( &$contact, &$params, &$menu_params ) {
 		global $Itemid, $hide_js, $mosConfig_live_site;
 
 		if ( $contact->name ||  $contact->con_position ) {
@@ -440,7 +440,7 @@ class HTML_contact {
 	/*
 	* Writes Image
 	*/
-	function _writeImage( &$contact, &$params ) {
+public static function _writeImage( &$contact, &$params ) {
 		global $mosConfig_live_site;
 
 		if ( $contact->image && $params->get( 'image' ) ) {
@@ -455,7 +455,7 @@ class HTML_contact {
 	/**
 	* Writes Address
 	*/
-	function _writeContactAddress( &$contact, &$params ) {
+public static function _writeContactAddress( &$contact, &$params ) {
 		if ( ( $params->get( 'address_check' ) > 0 ) &&  ( $contact->address || $contact->suburb  || $contact->state || $contact->country || $contact->postcode ) ) {
 			?>
 			<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -538,7 +538,7 @@ class HTML_contact {
 	/**
 	* Writes Contact Info
 	*/
-	function _writeContactContact( &$contact, &$params ) {
+public static function _writeContactContact( &$contact, &$params ) {
 		if ( $contact->email_to || $contact->telephone  || $contact->fax ) {
 			?>
 			<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -601,7 +601,7 @@ class HTML_contact {
 	/**
 	* Writes Misc Info
 	*/
-	function _writeContactMisc( &$contact, &$params ) {
+public static function _writeContactMisc( &$contact, &$params ) {
 		if ( $contact->misc && $params->get( 'misc' ) ) {
 			?>
 			<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -626,7 +626,7 @@ class HTML_contact {
 	/**
 	* Writes Email form
 	*/
-	function _writeVcard( &$contact, &$params ) {
+public static function _writeVcard( &$contact, &$params ) {
 		if ( $params->get( 'vcard' ) ) {
 			?>
 			<tr>
@@ -644,7 +644,7 @@ class HTML_contact {
 	/**
 	* Writes Email form
 	*/
-	function _writeEmailForm( &$contact, &$params, $sitename, &$menu_params ) {
+public static function _writeEmailForm( &$contact, &$params, $sitename, &$menu_params ) {
 		global $Itemid;
 
 		if ( $contact->email_to && !$params->get( 'popup' ) && $params->get( 'email_form' ) ) {
@@ -710,7 +710,7 @@ class HTML_contact {
 	}
 
 
-	function nocontact( &$params ) {
+public static function nocontact( &$params ) {
 		?>
 		<br />
 		<br />
