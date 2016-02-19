@@ -26,13 +26,13 @@ class joomlaVersion {
 	/** @var string Development Status */
 	var $DEV_STATUS = 'Stable';
 	/** @var int Sub Release Level */
-	var $DEV_LEVEL 	= '16';
+	var $DEV_LEVEL 	= '17';
 	/** @var int build Number */
 	var $BUILD	 	= '$Revision$';
 	/** @var string Codename */
 	var $CODENAME 	= 'Daytime';
 	/** @var string Date */
-	var $RELDATE 	= '2 April 2012';
+	var $RELDATE 	= '18 February 2016';
 	/** @var string Time */
 	var $RELTIME 	= '23:00';
 	/** @var string Timezone */
