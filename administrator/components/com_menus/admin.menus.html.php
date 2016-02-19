@@ -181,7 +181,7 @@ class HTML_menusections {
 	/**
 	* Displays a selection list for menu item types
 	*/
-	function addMenuItem( &$cid, $menutype, $option, $types_content, $types_component, $types_link, $types_other, $types_submit ) {
+	public static function addMenuItem( &$cid, $menutype, $option, $types_content, $types_component, $types_link, $types_other, $types_submit ) {
 
 		mosCommonHTML::loadOverlib();
 		?>
@@ -316,7 +316,7 @@ class HTML_menusections {
 		<?php
 	}
 
-	function htmlOptions( &$row, $link, $k, $i ) {
+	public static function htmlOptions( &$row, $link, $k, $i ) {
 		?>
 		<tr class="<?php echo "row$k"; ?>">
 			<td width="20">
@@ -340,7 +340,7 @@ class HTML_menusections {
 	/**
 	* Form to select Menu to move menu item(s) to
 	*/
-	function moveMenu( $option, $cid, $MenuList, $items, $menutype  ) {
+	public static function moveMenu( $option, $cid, $MenuList, $items, $menutype  ) {
 		?>
 		<form action="index2.php" method="post" name="adminForm">
 		<br />
@@ -401,7 +401,7 @@ class HTML_menusections {
 	/**
 	* Form to select Menu to copy menu item(s) to
 	*/
-	function copyMenu( $option, $cid, $MenuList, $items, $menutype  ) {
+	public static function copyMenu( $option, $cid, $MenuList, $items, $menutype  ) {
 		?>
 		<form action="index2.php" method="post" name="adminForm">
 		<br />

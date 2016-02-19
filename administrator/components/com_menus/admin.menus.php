@@ -206,8 +206,8 @@ function viewMenuItems( $menutype, $option ) {
 				break;
 
 			case 'url':
-				if ( eregi( 'index.php\?', $mitem->link ) ) {
-					if ( !eregi( 'Itemid=', $mitem->link ) ) {
+				if ( preg_match ('/index.php\?/', $mitem->link ) ) {
+					if ( !preg_match ( '/Itemid=/', $mitem->link ) ) {
 						$mitem->link .= '&Itemid='. $mitem->id;
 					}
 				}
