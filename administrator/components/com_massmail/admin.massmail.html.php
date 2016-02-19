@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Massmail
 */
 class HTML_massmail {
-	function messageForm( &$lists, $option ) {
+	public static function messageForm( &$lists, $option ) {
 		?>
 		<script language="javascript" type="text/javascript">
 			function submitbutton(pressbutton) {

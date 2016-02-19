@@ -24,7 +24,7 @@ class components_menu {
 	* @param database A database connector object
 	* @param integer The unique id of the category to edit (0 if new)
 	*/
-	function edit( $uid, $menutype, $option ) {
+	public static function edit( $uid, $menutype, $option ) {
 		global $database, $my, $mainframe;
 
 		$menu = new mosMenu( $database );

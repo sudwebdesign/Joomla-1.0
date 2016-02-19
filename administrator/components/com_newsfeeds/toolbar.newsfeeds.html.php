@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Newsfeeds
 */
 class TOOLBAR_newsfeeds  {
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::publishList();
 		mosMenuBar::spacer();
@@ -36,7 +36,7 @@ class TOOLBAR_newsfeeds  {
 		mosMenuBar::endTable();
 	}
 
-	function _NEW() {
+	public static function _NEW() {
 		mosMenuBar::startTable();
 		mosMenuBar::save();
 		mosMenuBar::spacer();
@@ -46,7 +46,7 @@ class TOOLBAR_newsfeeds  {
 		mosMenuBar::endTable();
 	}
 
-	function _EDIT() {
+	public static function _EDIT() {
 		global $id;
 
 		mosMenuBar::startTable();

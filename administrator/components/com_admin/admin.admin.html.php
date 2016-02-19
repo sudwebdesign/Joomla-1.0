@@ -44,7 +44,7 @@ class HTML_admin_misc {
 		}
 	}
 
-	function get_php_setting($val, $colour=0, $yn=1) {
+	public static function get_php_setting($val, $colour=0, $yn=1) {
 		$r =  (ini_get($val) == '1' ? 1 : 0);
 
 		if ($colour) {
@@ -60,7 +60,7 @@ class HTML_admin_misc {
 		}
 	}
 
-	function get_server_software() {
+	public static function get_server_software() {
 		if (isset($_SERVER['SERVER_SOFTWARE'])) {
 			return $_SERVER['SERVER_SOFTWARE'];
 		} else if (($sf = phpversion() <= '4.2.1' ? getenv('SERVER_SOFTWARE') : $_SERVER['SERVER_SOFTWARE'])) {
@@ -70,7 +70,7 @@ class HTML_admin_misc {
 		}
 	}
 
-	function system_info( $version ) {
+	public static function system_info( $version ) {
 		global $mosConfig_absolute_path, $database, $mosConfig_cachepath, $mainframe;
 
 		$width 	= 400;	// width of 100%
@@ -418,7 +418,7 @@ class HTML_admin_misc {
 		<?php
 	}
 
-	function ListComponents() {
+	public static function ListComponents() {
 		global $database;
 
 		$query = "SELECT params"
@@ -435,7 +435,7 @@ class HTML_admin_misc {
 	/**
 	 * Display Help Page
 	 */
-	function help() {
+	public static function help() {
 		global $mosConfig_live_site;
 		$helpurl 	= strval( mosGetParam( $GLOBALS, 'mosConfig_helpurl', '' ) );
 
@@ -568,7 +568,7 @@ class HTML_admin_misc {
 	/**
 	* Preview site
 	*/
-	function preview( $tp=0 ) {
+	public static function preview( $tp=0 ) {
 		global $mosConfig_live_site;
 		$tp = intval( $tp );
 		?>
@@ -603,7 +603,7 @@ class HTML_admin_misc {
 	/*
 	* Displays contents of Changelog.php file
 	*/
-	function changelog() {
+	public static function changelog() {
 		?>
 		<pre>
 			<?php
@@ -618,7 +618,7 @@ class HTML_admin_misc {
  * Compiles the help table of contents
  * @param string A specific keyword on which to filter the resulting list
  */
-function getHelpTOC( $helpsearch ) {
+	function getHelpTOC( $helpsearch ) {
 	global $mosConfig_absolute_path;
 	$helpurl = strval( mosGetParam( $GLOBALS, 'mosConfig_helpurl', '' ) );
 

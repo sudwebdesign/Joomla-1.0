@@ -25,7 +25,7 @@ class HTML_modules {
 	* Writes a list of the defined modules
 	* @param array An array of category objects
 	*/
-	function showMambots( &$rows, $client, &$pageNav, $option, &$lists, $search ) {
+	public static function showMambots( &$rows, $client, &$pageNav, $option, &$lists, $search ) {
 		global $my;
 
 		mosCommonHTML::loadOverlib();
@@ -163,7 +163,7 @@ class HTML_modules {
 	* @param array An array of select lists
 	* @param object Parameters
 	*/
-	function editMambot( &$row, &$lists, &$params, $option ) {
+	public static function editMambot( &$row, &$lists, &$params, $option ) {
 		global $mosConfig_live_site;
 
 		$row->nameA = '';

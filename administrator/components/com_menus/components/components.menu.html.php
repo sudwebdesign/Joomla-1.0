@@ -26,7 +26,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 class components_menu_html {
 
 
-	function edit( &$menu, &$components, &$lists, &$params, $option ) {
+	public static function edit( &$menu, &$components, &$lists, &$params, $option ) {
 		global $mosConfig_live_site;
 
 		if ( $menu->id ) {

@@ -148,7 +148,7 @@ class HTML_menumanager {
 	* writes a form to take the name of the menu you would like created
 	* @param option	display options for the form
 	*/
-	function edit ( &$row, $option ) {
+	public static function edit ( &$row, $option ) {
 		global $mosConfig_live_site;
 
 		$new = $row->menutype ? 0 : 1;
@@ -270,7 +270,7 @@ class HTML_menumanager {
 	* A delete confirmation page
 	* Writes list of the items that have been selected for deletion
 	*/
-	function showDelete( $option, $type, $items, $modules ) {
+	public static function showDelete( $option, $type, $items, $modules ) {
 		?>
 		<form action="index2.php" method="post" name="adminForm">
 		<table class="adminheading">
@@ -359,7 +359,7 @@ class HTML_menumanager {
 	* A copy confirmation page
 	* Writes list of the items that have been selected for copy
 	*/
-	function showCopy( $option, $type, $items ) {
+	public static function showCopy( $option, $type, $items ) {
 	?>
 		<script language="javascript" type="text/javascript">
 		function submitbutton(pressbutton) {

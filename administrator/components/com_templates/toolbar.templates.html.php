@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Templates
 */
 class TOOLBAR_templates {
-	function _DEFAULT($client) {
+	public static function _DEFAULT($client) {
 		mosMenuBar::startTable();
 		if ($client=="admin") {
 			mosMenuBar::custom('publish', 'publish.png', 'publish_f2.png', 'Default', true);
@@ -42,13 +42,13 @@ class TOOLBAR_templates {
 		mosMenuBar::help( 'screen.templates' );
 		mosMenuBar::endTable();
 	}
- 	function _VIEW(){
+	public static function _VIEW(){
 		mosMenuBar::startTable();
 		mosMenuBar::back();
 		mosMenuBar::endTable();
 	}
 
-	function _EDIT_SOURCE(){
+	public static function _EDIT_SOURCE(){
 		mosMenuBar::startTable();
 		mosMenuBar::save( 'save_source' );
 		mosMenuBar::spacer();
@@ -56,7 +56,7 @@ class TOOLBAR_templates {
 		mosMenuBar::endTable();
 	}
 
-	function _EDIT_CSS(){
+	public static function _EDIT_CSS(){
 		mosMenuBar::startTable();
 		mosMenuBar::save( 'save_css' );
 		mosMenuBar::spacer();
@@ -64,7 +64,7 @@ class TOOLBAR_templates {
 		mosMenuBar::endTable();
 	}
 
-	function _ASSIGN(){
+	public static function _ASSIGN(){
 		mosMenuBar::startTable();
 		mosMenuBar::save( 'save_assign', 'Save' );
 		mosMenuBar::spacer();
@@ -74,7 +74,7 @@ class TOOLBAR_templates {
 		mosMenuBar::endTable();
 	}
 
-	function _POSITIONS(){
+	public static function _POSITIONS(){
 		mosMenuBar::startTable();
 		mosMenuBar::save( 'save_positions' );
 		mosMenuBar::spacer();

@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_contact {
 
-	function showContacts( &$rows, &$pageNav, $search, $option, &$lists ) {
+	public static function showContacts( &$rows, &$pageNav, $search, $option, &$lists ) {
 		global $my;
 
 		mosCommonHTML::loadOverlib();
@@ -143,7 +143,7 @@ class HTML_contact {
 	}
 
 
-	function editContact( &$row, &$lists, $option, &$params ) {
+	public static function editContact( &$row, &$lists, $option, &$params ) {
 		global $mosConfig_live_site;
 
 		if ($row->image == '') {

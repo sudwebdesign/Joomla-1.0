@@ -25,8 +25,8 @@ require_once( $mainframe->getPath( 'admin_html' ) );
 $menu 		= stripslashes( strval( mosGetParam( $_GET, 'menu', '' ) ) );
 $type 		= stripslashes( strval( mosGetParam( $_POST, 'type', '' ) ) );
 $cid 		= mosGetParam( $_POST, 'cid', '' );
-if (isset( $cid[0] ) && get_magic_quotes_gpc()) {
-	$cid[0] = stripslashes( $cid[0] );
+if (isset( $cid[0] )) {
+	$cid[0] = stripslashes($cid[0]);
 }
 
 switch ($task) {
@@ -84,14 +84,15 @@ function showMenu( $option ) {
 	$total		= count( $menuTypes );
 	$i			= 0;
 	$menus  = array();
-	foreach ( $menuTypes as $a ) {
+	foreach ( $menuTypes as $a) {
+		$menus[$i] = new StdClass;
 		$menus[$i]->type 		= $a;
 
 		// query to get number of modules for menutype
 		$query = "SELECT count( id )"
-		. "\n FROM #__modules"
-		. "\n WHERE module = 'mod_mainmenu'"
-		. "\n AND params LIKE '%" . $database->getEscaped( $a ) . "%'"
+			. "\n FROM #__modules"
+			. "\n WHERE module = 'mod_mainmenu'"
+			. "\n AND params LIKE '%" . $database->getEscaped( $a ) . "%'"
 		;
 		$database->setQuery( $query );
 		$modules = $database->loadResult();
@@ -103,7 +104,6 @@ function showMenu( $option ) {
 
 		$i++;
 	}
-
 	// Query to get published menu item counts
 	$query = "SELECT a.menutype, count( a.menutype ) as num"
 	. "\n FROM #__menu AS a"
@@ -181,6 +181,7 @@ function editMenu( $option, $menu ) {
 	global $database;
 
 	if( $menu ) {
+		$row = new StdClass;
 		$row->menutype 	= $menu;
 	} else {
 		$row = new mosModule( $database );

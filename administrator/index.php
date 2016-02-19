@@ -160,7 +160,7 @@ if (isset( $_POST['submit'] )) {
 		// for a demo site disallow expired page functionality
 		if ( $_VERSION->SITE == 1 && @$mosConfig_admin_expired === '1' ) {
 			$file 	= $mainframe->getPath( 'com_xml', 'com_users' );
-			$params =& new mosParameters( $my->params, $file, 'component' );
+			$params = new mosParameters( $my->params, $file, 'component' );
 
 			$now 	= time();
 

@@ -25,7 +25,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class content_menu_html {
 
-	function edit( &$menu, &$lists, &$params, $option, $content ) {
+	public static function edit( &$menu, &$lists, &$params, $option, $content ) {
 		global $mosConfig_live_site;
 		?>
 		<div id="overDiv" style="position:absolute; visibility:hidden; z-index:10000;"></div>

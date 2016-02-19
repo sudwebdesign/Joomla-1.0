@@ -112,7 +112,7 @@ class HTML_languages {
 		<?php
 	}
 
-	function editLanguageSource( $language, &$content, $option ) {
+	public static function editLanguageSource( $language, &$content, $option ) {
 		global $mosConfig_absolute_path;
 		$language_path = $mosConfig_absolute_path . "/language/" . $language . ".php";
 		?>

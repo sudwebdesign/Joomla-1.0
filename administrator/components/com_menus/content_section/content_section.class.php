@@ -25,7 +25,7 @@ class content_section_menu {
 	* @param database A database connector object
 	* @param integer The unique id of the category to edit (0 if new)
 	*/
-	function editSection( $uid, $menutype, $option ) {
+	public static function editSection( $uid, $menutype, $option ) {
 		global $database, $my, $mainframe;
 
 		$menu = new mosMenu( $database );

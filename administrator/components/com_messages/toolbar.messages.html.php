@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Messages
 */
 class TOOLBAR_messages {
-	function _VIEW() {
+	public static function _VIEW() {
 		mosMenuBar::startTable();
 		mosMenuBar::customX('reply', 'restore.png', 'restore_f2.png', 'Reply', false );
 		mosMenuBar::spacer();
@@ -30,7 +30,7 @@ class TOOLBAR_messages {
 		mosMenuBar::endTable();
 	}
 
-	function _EDIT() {
+	public static function _EDIT() {
 		mosMenuBar::startTable();
 		mosMenuBar::save( 'save', 'Send' );
 		mosMenuBar::spacer();
@@ -40,7 +40,7 @@ class TOOLBAR_messages {
 		mosMenuBar::endTable();
 	}
 
-	function _CONFIG() {
+	public static function _CONFIG() {
 		mosMenuBar::startTable();
 		mosMenuBar::save( 'saveconfig' );
 		mosMenuBar::spacer();
@@ -50,7 +50,7 @@ class TOOLBAR_messages {
 		mosMenuBar::endTable();
 	}
 
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::deleteList();
 		mosMenuBar::spacer();

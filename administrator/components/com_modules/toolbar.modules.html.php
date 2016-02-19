@@ -23,7 +23,7 @@ class TOOLBAR_modules {
 	/**
 	* Draws the menu for a New module
 	*/
-	function _NEW()	{
+	public static function _NEW()	{
 		mosMenuBar::startTable();
 		mosMenuBar::preview( 'modulewindow' );
 		mosMenuBar::spacer();
@@ -40,7 +40,7 @@ class TOOLBAR_modules {
 	/**
 	* Draws the menu for Editing an existing module
 	*/
-	function _EDIT( $cur_template, $publish ) {
+	public static function _EDIT( $cur_template, $publish ) {
 		global $id;
 
 		mosMenuBar::startTable();
@@ -66,7 +66,7 @@ class TOOLBAR_modules {
 		mosMenuBar::help( 'screen.modules.edit' );
 		mosMenuBar::endTable();
 	}
-	function _DEFAULT() {
+    public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::publishList();
 		mosMenuBar::spacer();

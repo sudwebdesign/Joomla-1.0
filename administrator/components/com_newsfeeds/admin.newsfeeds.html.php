@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_newsfeeds {
 
-	function showNewsFeeds( &$rows, &$lists, $pageNav, $option ) {
+	public static function showNewsFeeds( &$rows, &$lists, $pageNav, $option ) {
 		global $my, $mosConfig_cachepath;
 
 		mosCommonHTML::loadOverlib();
@@ -160,7 +160,7 @@ class HTML_newsfeeds {
 	}
 
 
-	function editNewsFeed( &$row, &$lists, $option ) {
+	public static function editNewsFeed( &$row, &$lists, $option ) {
 		mosMakeHtmlSafe( $row, ENT_QUOTES );
 		?>
 		<script language="javascript" type="text/javascript">

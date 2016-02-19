@@ -333,7 +333,7 @@ function josSecurityCheck($width='95%') {
 	}
 
 ?>
-		
+
     <?php
 	if ( count($wrongSettingsTexts) ) {
 		?>

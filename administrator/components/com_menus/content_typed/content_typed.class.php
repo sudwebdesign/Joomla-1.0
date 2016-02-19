@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class content_typed_menu {
 
-	function edit( &$uid, $menutype, $option ) {
+	public static function edit( &$uid, $menutype, $option ) {
 		global $database, $my, $mainframe;
 		global $mosConfig_absolute_path;
 

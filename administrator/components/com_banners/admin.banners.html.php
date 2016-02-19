@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_banners {
 
-	function showBanners( &$rows, &$pageNav, $option ) {
+	public static function showBanners( &$rows, &$pageNav, $option ) {
 		global $my;
 
 		mosCommonHTML::loadOverlib();
@@ -141,7 +141,7 @@ class HTML_banners {
 		<?php
 	}
 
-	function bannerForm( &$_row, &$lists, $_option ) {
+	public static function bannerForm( &$_row, &$lists, $_option ) {
 		mosMakeHtmlSafe( $_row, ENT_QUOTES, 'custombannercode' );
 		?>
 		<script language="javascript" type="text/javascript">
@@ -273,11 +273,11 @@ class HTML_banners {
 			</td>
 			<td valign="top">
 			<?php
-			if(preg_match("/.swf/", $row->image_url)) {
+			if(preg_match("/.swf/", $_row->imageurl)) {
 				?>
 				<img src="images/blank.png" name="imagelib">
 				<?php
-			} elseif(preg_match("/(\.bmp|\.gif|\.jpg|\.jpeg|\.png)$/", $row->image_url)) {
+			} elseif(preg_match("/(\.bmp|\.gif|\.jpg|\.jpeg|\.png)$/", $_row->imageurl)) {
 				?>
 				<img src="../images/banners/<?php echo $_row->imageurl; ?>" name="imagelib" />
 				<?php
@@ -312,7 +312,7 @@ class HTML_banners {
 */
 class HTML_bannerClient {
 
-	function showClients( &$rows, &$pageNav, $option ) {
+	public static function showClients( &$rows, &$pageNav, $option ) {
 		global $my;
 
 		mosCommonHTML::loadOverlib();
@@ -403,7 +403,7 @@ class HTML_bannerClient {
 		<?php
 	}
 
-	function bannerClientForm( &$row, $option ) {
+	public static function bannerClientForm( &$row, $option ) {
 		mosMakeHtmlSafe( $row, ENT_QUOTES, 'extrainfo' );
 		?>
 		<script language="javascript" type="text/javascript">
@@ -491,4 +491,3 @@ class HTML_bannerClient {
 		<?php
 	}
 }
-

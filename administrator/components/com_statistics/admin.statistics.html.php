@@ -20,7 +20,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 * @subpackage Statistics
 */
 class HTML_statistics {
-	function show( &$browsers, &$platforms, $tldomains, $bstats, $pstats, $dstats, $sorts, $option ) {
+	public static function show( &$browsers, &$platforms, $tldomains, $bstats, $pstats, $dstats, $sorts, $option ) {
 		global $mosConfig_live_site;
 
 		$tab = mosGetParam( $_REQUEST, 'tab', 'tab1' );
@@ -180,7 +180,7 @@ class HTML_statistics {
 		<?php
 	}
 
-	function pageImpressions( &$rows, $pageNav, $option, $task ) {
+	public static function pageImpressions( &$rows, $pageNav, $option, $task ) {
 		?>
 		<table cellpadding="4" cellspacing="0" border="0" width="100%" class="adminheading">
 		<tr>
@@ -224,7 +224,7 @@ class HTML_statistics {
 		<?php
 	}
 
-	function showSearches( &$rows, $pageNav, $option, $task, $showResults ) {
+	public static function showSearches( &$rows, $pageNav, $option, $task, $showResults ) {
 		global $mainframe;
 		
 		mosCommonHTML::loadOverlib();

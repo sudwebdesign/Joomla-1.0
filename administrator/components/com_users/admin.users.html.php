@@ -142,7 +142,7 @@ class HTML_users {
 		<?php
 	}
 
-	function edituser( &$row, &$contact, &$lists, $option, $uid, &$params ) {
+	public static function edituser( &$row, &$contact, &$lists, $option, $uid, &$params ) {
 		global $my, $acl;
 		global $mosConfig_live_site;
 

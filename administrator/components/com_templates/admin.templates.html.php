@@ -25,7 +25,7 @@ class HTML_templates {
 	* @param object A page navigation object
 	* @param string The option
 	*/
-	function showTemplates( &$rows, &$pageNav, $option, $client ) {
+	public static function showTemplates( &$rows, &$pageNav, $option, $client ) {
 		global $my, $mosConfig_live_site;
 
 		if ( isset( $row->authorUrl) && $row->authorUrl != '' ) {

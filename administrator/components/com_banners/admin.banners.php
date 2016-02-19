@@ -172,19 +172,19 @@ function saveBanner( $task ) {
 		echo "<script> alert('".$row->getError()."'); window.history.go(-1); </script>\n";
 		exit();
 	}
-	
+
 	// Resets clicks when `Reset Clicks` button is used instead of `Save` button
 	if ( $task == 'resethits' ) {
 		$row->clicks = 0;
 		$msg = 'Reset Banner clicks';
 	}
-	
+
 	// Sets impressions to unlimited when `unlimited` checkbox ticked
 	$unlimited = intval( mosGetParam( $_POST, 'unlimited', 0 ) );
 	if ( $unlimited ) {
 		$row->imptotal = 0;
 	}
-	
+
 	if (!$row->check()) {
 		echo "<script> alert('".$row->getError()."'); window.history.go(-1); </script>\n";
 		exit();
@@ -202,7 +202,7 @@ function cancelEditBanner() {
 	global $database;
 
 	josSpoofCheck();
-	
+
 	$row = new mosBanner($database);
 	$row->bind( $_POST );
 	$row->checkin();
@@ -384,4 +384,3 @@ function removeBannerClients( $cid, $option ) {
 	}
 	mosRedirect("index2.php?option=$option&task=listclients");
 }
-

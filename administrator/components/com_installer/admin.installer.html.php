@@ -15,7 +15,7 @@
 // no direct access
 defined( '_VALID_MOS' ) or die( 'Restricted access' );
 
-function writableCell( $folder ) {
+public static function writableCell( $folder ) {
 	echo '<tr>';
 	echo '<td class="item">' . $folder . '/</td>';
 	echo '<td align="left">';
@@ -28,7 +28,7 @@ function writableCell( $folder ) {
 */
 class HTML_installer {
 
-	function showInstallForm( $title, $option, $element, $client = "", $p_startdir = "", $backLink="" ) {
+	public static function showInstallForm( $title, $option, $element, $client = "", $p_startdir = "", $backLink="" ) {
 		if (!defined( '_INSTALL_3PD_WARN' )) {
 			define( '_INSTALL_3PD_WARN', 'Warning: Installing 3rd party extensions may compromise your server\'s security. Upgrading your Joomla! installation will not update your 3rd party extensions.<br />For more information on keeping your site secure, please see the <a href="http://forum.joomla.org/index.php/board,267.0.html" target="_blank" style="color: blue; text-decoration: underline;">Joomla! Security Forum</a>.' );
 		}
@@ -114,7 +114,7 @@ class HTML_installer {
 	* @param string
 	* @param string
 	*/
-	function showInstallMessage( $message, $title, $url ) {
+	public static function showInstallMessage( $message, $title, $url ) {
 		global $PHP_SELF;
 		?>
 		<table class="adminheading">

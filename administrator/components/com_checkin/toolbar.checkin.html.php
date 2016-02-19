@@ -23,7 +23,7 @@ class TOOLBAR_checkin {
 	/**
 	* Draws the menu for a New category
 	*/
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::help( 'screen.checkin' );
 		mosMenuBar::endTable();

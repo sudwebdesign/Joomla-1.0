@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_poll {
 
-	function showPolls( &$rows, &$pageNav, $option ) {
+	public static function showPolls( &$rows, &$pageNav, $option ) {
 		global $my;
 
 		mosCommonHTML::loadOverlib();
@@ -108,7 +108,7 @@ class HTML_poll {
 	}
 
 
-	function editPoll( &$row, &$options, &$lists ) {
+	public static function editPoll( &$row, &$options, &$lists ) {
 		mosMakeHtmlSafe( $row, ENT_QUOTES );
 		?>
 		<script language="javascript" type="text/javascript">

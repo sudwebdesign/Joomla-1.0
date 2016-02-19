@@ -23,7 +23,7 @@ class TOOLBAR_banners {
 	/**
 	* Draws the menu for to Edit a banner
 	*/
-	function _EDIT() {
+	public static function _EDIT() {
 		global $id;
 
 		mosMenuBar::startTable();
@@ -41,7 +41,7 @@ class TOOLBAR_banners {
 		mosMenuBar::help( 'screen.banners.edit' );
 		mosMenuBar::endTable();
 	}
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::media_manager( 'banners' );
 		mosMenuBar::spacer();
@@ -68,7 +68,7 @@ class TOOLBAR_bannerClient {
 	/**
 	* Draws the menu for to Edit a client
 	*/
-	function _EDIT() {
+	public static function _EDIT() {
 		global $id;
 
 		mosMenuBar::startTable();
@@ -87,7 +87,7 @@ class TOOLBAR_bannerClient {
 	/**
 	* Draws the default menu
 	*/
-	function _DEFAULT() {
+	public static function _DEFAULT() {
 		mosMenuBar::startTable();
 		mosMenuBar::deleteList( '', 'removeclients' );
 		mosMenuBar::spacer();
@@ -99,4 +99,3 @@ class TOOLBAR_bannerClient {
 		mosMenuBar::endTable();
 	}
 }
-

@@ -25,7 +25,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class content_blog_section_html {
 
-	function edit( &$menu, &$lists, &$params, $option ) {
+	public static function edit( &$menu, &$lists, &$params, $option ) {
 		/* in the HTML below, references to "section" were changed to "section" */
 		global $mosConfig_live_site;
 		?>

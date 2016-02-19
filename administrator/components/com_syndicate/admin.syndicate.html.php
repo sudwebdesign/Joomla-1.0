@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_syndicate {
 
-	function settings( $option, &$params, $id ) {
+	public static function settings( $option, &$params, $id ) {
 		global $mosConfig_live_site, $mosConfig_cachepath, $my;
 		?>
 		<div id="overDiv" style="position:absolute; visibility:hidden; z-index:10000;"></div>
