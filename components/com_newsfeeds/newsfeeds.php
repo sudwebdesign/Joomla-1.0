@@ -230,3 +230,10 @@ function showFeed( $feedid ) {
 
 	HTML_newsfeed::showNewsfeeds( $newsfeed, $LitePath, $cacheDir, $params );
 }
+//Parse the feeds 2016
+function parseFeeds($feedUrl) {
+ $rawFeed = @file_get_contents($feedUrl);
+ if($rawFeed)
+  return @new SimpleXmlElement($rawFeed);
+}
+

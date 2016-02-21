@@ -238,49 +238,45 @@ public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params
 		}
 
 		// full RSS parser used to access image information
-		$rssDoc = new xml_domit_rss_document();
-		$rssDoc->setRSSTimeout(5);
-		$rssDoc->useCacheLite( true, $LitePath, $cacheDir, $newsfeed->cache_time );
-		$success = $rssDoc->loadRSS( $newsfeed->link );
-		
-		if ( $success ) {
-			$totalChannels = $rssDoc->getChannelCount();
-	
+		//~ $rssDoc = new xml_domit_rss_document();
+		//~ $rssDoc->setRSSTimeout(5);
+		//~ $rssDoc->useCacheLite( true, $LitePath, $cacheDir, $newsfeed->cache_time );
+		$rssDoc = parseFeeds( $newsfeed->link );//2016
+		if ( $rssDoc ) {
+			$totalChannels = $rssDoc->count();
+
 			for ( $i = 0; $i < $totalChannels; $i++ ) {
-				$currChannel	=& $rssDoc->getChannel($i);
-				$elements 		= $currChannel->getElementList();
+				$currChannel	= $rssDoc->channel;
+				$elements 		= $currChannel;
 				$descrip 		= 0;
 				$iUrl			= 0;
 
 				foreach ( $elements as $element ) {
 					//image handling
-					if ( $element == 'image' ) {
-						$image =& $currChannel->getElement( DOMIT_RSS_ELEMENT_IMAGE );
-						$iUrl	= $image->getUrl();
-						$iTitle	= $image->getTitle();
+					if ( isset($element->image) ) {
+						$iUrl	= $element->image->url;
+						$iTitle	= $element->image->title;
 					}
-					if ( $element == 'description' ) {
+					if ( isset($element->description) ) {
 						$descrip = 1;
 						// hide com_rss descrip in 4.5.0 feeds
-						if ( $currChannel->getDescription() == 'com_rss' ) {
+						if ( $element->description == 'com_rss' ) {
 							$descrip = 0;
 						}
 					}
 				}
-				$feed_title = $currChannel->getTitle();
-				$feed_title = mosCommonHTML::newsfeedEncoding( $rssDoc, $feed_title );
+				$feed_title = $currChannel->title;
 				?>
 				<tr>
 					<td class="contentheading<?php echo $params->get( 'pageclass_sfx' ); ?>">
-						<a href="<?php echo ampReplace( $currChannel->getLink() ); ?>" target="_blank">
+						<a href="<?php echo ampReplace( $currChannel->link/*getLink()*/ ); ?>" target="_blank">
 							<?php echo $feed_title; ?></a>
 					</td>
 				</tr>
 				<?php
 				// feed description
 				if ( $descrip && $params->get( 'feed_descr' ) ) {
-					$feed_descrip = $currChannel->getDescription();
-					$feed_descrip = mosCommonHTML::newsfeedEncoding( $rssDoc, $feed_descrip );
+					$feed_descrip = $currChannel->description;
 					?>
 					<tr>
 						<td>
@@ -296,12 +292,12 @@ public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params
 					?>
 					<tr>
 						<td>
-						<img src="<?php echo $iUrl; ?>" alt="<?php echo $iTitle; ?>" />
+						<img src="<?php echo $iUrl; ?>" title="<?php echo $iTitle; ?>" alt="<?php echo $iTitle; ?>" />
 						</td>
 					</tr>
 					<?php
 				}
-				$actualItems 	= $currChannel->getItemCount();
+				$actualItems 	= $currChannel->item->count();
 				$setItems 		= $newsfeed->numarticles;
 				if ( $setItems > $actualItems ) {
 					$totalItems = $actualItems;
@@ -314,20 +310,18 @@ public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params
 					<ul>
 						<?php
 						for ( $j = 0; $j < $totalItems; $j++ ) {
-							$currItem =& $currChannel->getItem($j);
-							
-							$item_title = $currItem->getTitle();
-							$item_title = mosCommonHTML::newsfeedEncoding( $rssDoc, $item_title );
+							$currItem =& $currChannel->item[$j];
+							$item_title = $currItem->title;
 							?>
 							<li>
-								<?php							
+								<?php
 								// START fix for RSS enclosure tag url not showing
-								if ($currItem->getLink()) {
+								if (isset($currItem->link)) {
 									?>
-									<a href="<?php echo ampReplace( $currItem->getLink() ); ?>" target="_blank">
+									<a href="<?php echo ampReplace( $currItem->link/*Link()*/ ); ?>" target="_blank">
 										<?php echo $item_title; ?></a>
 									<?php
-								} else if ($currItem->getEnclosure()) {
+								}/* else if ($currItem->getEnclosure()) {
 									$enclosure = $currItem->getEnclosure();
 									$eUrl	= $enclosure->getUrl();
 									?>
@@ -345,16 +339,15 @@ public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params
 									<a href="<?php echo $eUrl; ?>" target="_blank">
 										<?php echo ampReplace( $eUrl ); ?></a>
 									<?php
-								}
+								}*/
 								// END fix for RSS enclosure tag url not showing
-								
+
 								// item description
 								if ( $params->get( 'item_descr' ) ) {
-									$text = $currItem->getDescription();
-									$text = mosCommonHTML::newsfeedEncoding( $rssDoc, $text );
+									$text = $currItem->description;
 
 									$num 	= $params->get( 'word_count' );
-		
+
 									// word limit check
 									if ( $num ) {
 										$texts = explode( ' ', $text );
