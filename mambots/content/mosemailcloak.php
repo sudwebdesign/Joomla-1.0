@@ -143,7 +143,7 @@ function botMosEmailCloak( $published, &$row, &$params, $page=0 ) {
 	}
 }
 
-function botMosEmailCloak_searchPattern ( $link, $text ) {	//fixed ?? Warning: preg_match(): Unknown modifier 'a' & '/'
+function botMosEmailCloak_searchPattern ( $link, $text ) {
 	// <a href="mailto:anyLink">anyText</a>
 	$pattern = "(<\a [[:alnum:] _\"\'=\@\.\-]*href=[\"\']mailto:". $link	."[\"\'][[:alnum:] _\"\'=\@\.\-]*)>". $text ."<\/\a>";
 

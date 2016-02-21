@@ -269,7 +269,7 @@ public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params
 				?>
 				<tr>
 					<td class="contentheading<?php echo $params->get( 'pageclass_sfx' ); ?>">
-						<a href="<?php echo ampReplace( $currChannel->link/*getLink()*/ ); ?>" target="_blank">
+						<a href="<?php echo ampReplace( $currChannel->link ); ?>" target="_blank">
 							<?php echo $feed_title; ?></a>
 					</td>
 				</tr>
@@ -318,7 +318,7 @@ public static function showNewsfeeds( &$newsfeed, $LitePath, $cacheDir, &$params
 								// START fix for RSS enclosure tag url not showing
 								if (isset($currItem->link)) {
 									?>
-									<a href="<?php echo ampReplace( $currItem->link/*Link()*/ ); ?>" target="_blank">
+									<a href="<?php echo ampReplace( $currItem->link ); ?>" target="_blank">
 										<?php echo $item_title; ?></a>
 									<?php
 								}/* else if ($currItem->getEnclosure()) {
