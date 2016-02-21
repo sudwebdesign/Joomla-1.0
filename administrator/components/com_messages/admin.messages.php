@@ -66,13 +66,13 @@ function editConfig( $option ) {
 
 	// initialize values if they do not exist
 	if (!isset($data['lock']->cfg_value)) {
-		$data['lock']->cfg_value 		= 0;
+		@$data['lock']->cfg_value 		= 0;
 	}
 	if (!isset($data['mail_on_new']->cfg_value)) {
-		$data['mail_on_new']->cfg_value = 0;
+		@$data['mail_on_new']->cfg_value = 0;
 	}
 	if (!isset($data['auto_purge']->cfg_value)) {
-		$data['auto_purge']->cfg_value 	= 7;
+		@$data['auto_purge']->cfg_value 	= 7;
 	}
 	
 	$vars 					= array();

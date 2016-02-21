@@ -32,7 +32,7 @@ if (!defined( '_MOS_MAINMENU_MODULE' )) {
 				break;
 				
 			case 'url':
-				if (preg_match('/index.php\?/', $link) && !preg_match('/http/', $link) && !preg_match('/https/', $link)) {
+				if (isset($link) && preg_match('/index.php\?/', $link) && !preg_match('/http/', $link) && !preg_match('/https/', $link)) {
 					if (!preg_match('/Itemid=/', $link)) {
 						$mitem->link .= '&Itemid='. $mitem->id;
 					}
@@ -49,7 +49,7 @@ if (!defined( '_MOS_MAINMENU_MODULE' )) {
 				if ( $unique_itemid ) {
 					$mitem->link .= '&Itemid='. $mitem->id;
 				} else {
-					$temp = split('&task=view&id=', $mitem->link);
+					$temp = explode('&task=view&id=', $mitem->link);
 					
 					if ( $mitem->type == 'content_typed' ) {
 						$mitem->link .= '&Itemid='. $mainframe->getItemid($temp[1], 1, 0);

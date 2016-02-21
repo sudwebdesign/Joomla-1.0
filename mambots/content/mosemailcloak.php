@@ -143,9 +143,9 @@ function botMosEmailCloak( $published, &$row, &$params, $page=0 ) {
 	}
 }
 
-function botMosEmailCloak_searchPattern ( $link, $text ) {	
+function botMosEmailCloak_searchPattern ( $link, $text ) {	//fixed ?? Warning: preg_match(): Unknown modifier 'a' & '/'
 	// <a href="mailto:anyLink">anyText</a>
-	$pattern = "(<a [[:alnum:] _\"\'=\@\.\-]*href=[\"\']mailto:". $link	."[\"\'][[:alnum:] _\"\'=\@\.\-]*)>". $text ."</a>";
+	$pattern = "(<\a [[:alnum:] _\"\'=\@\.\-]*href=[\"\']mailto:". $link	."[\"\'][[:alnum:] _\"\'=\@\.\-]*)>". $text ."<\/\a>";
 
 	return $pattern;
 }

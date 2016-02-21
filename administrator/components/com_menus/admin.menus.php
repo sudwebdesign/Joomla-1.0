@@ -279,7 +279,7 @@ function addMenuItem( &$cid, $menutype, $option, $task ) {
 			foreach ($files as $file) {
 				require_once( "$dir/$file" );
 				// type of menu type
-				$types[]->type = $type;
+				@$types[]->type = $type;
 			}
 		}
 	}

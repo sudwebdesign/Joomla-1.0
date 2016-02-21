@@ -58,11 +58,11 @@ class InputFilter
 	function decode($source)
 	{
 		// url decode
-		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
+		$source = html_entity_decode($source);
 		// convert decimal
-		$source = str_replace('/&#(\d+);/me', "chr(\\1)", $source); // decimal notation
+		$source = preg_replace_callback('/&#(\d+);/m', create_function ('$matches', 'return "chr($matches[1])";'), $source); // decimal notation
 		// convert hex
-		$source = str_replace('/&#x([a-f0-9]+);/mei', "chr(0x\\1)", $source); // hex notation
+		$source = preg_replace_callback('/&#x([a-f0-9]+);/mi', create_function ('$matches', 'return "chr(0x$matches[2])";'), $source); // hex notation
 		return $source;
 	}
 

@@ -15,7 +15,7 @@
 // no direct access
 defined( '_VALID_MOS' ) or die( 'Restricted access' );
 
-public static function writableCell( $folder ) {
+function writableCell( $folder ) {
 	echo '<tr>';
 	echo '<td class="item">' . $folder . '/</td>';
 	echo '<td align="left">';

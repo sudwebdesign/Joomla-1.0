@@ -277,7 +277,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 	}
 
 	 while ($i--) {
-		 if (!$mid || empty( $mitems[$mid] ) || $Itemid == $home_menu->id || !preg_match("option", $optionstring)) {
+		 if (!$mid || empty( $mitems[$mid] ) || $Itemid == $home_menu->id || !preg_match("~option~i", $optionstring)) {
 			 break;
 		 }
 		$item =& $mitems[$mid];
@@ -288,7 +288,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 		if (($item->id == $Itemid && !$mainframe->getCustomPathWay()) || empty( $mid ) || empty($item->link)) {
 			$newlink = "  $itemname";
 		} else if (isset($item->type) && $item->type == 'url') {
-			$correctLink = preg_match('/http:\/\//i',$item->link);
+			$correctLink = preg_match('~http:\/\/~i',$item->link);
 			if ($correctLink==1) {
 				$newlink = '<a href="'. $item->link .'" target="_window" class="pathway">'. $itemname .'</a>';
 			} else {

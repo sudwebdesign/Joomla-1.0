@@ -75,7 +75,7 @@ function showInstalledModules( $_option ) {
 		}
 
 		// xml file for module
-		$xmlfile = $moduleBaseDir. "/" .$row->module .".xml";
+		$xmlfile = $moduleBaseDir.$row->module .".xml";
 
 		if (file_exists( $xmlfile )) {
 			$xmlDoc = new DOMIT_Lite_Document();
