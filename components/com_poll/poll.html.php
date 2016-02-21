@@ -23,7 +23,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 class poll_html {
 
 
-	function showResults( &$poll, &$votes, $first_vote, $last_vote, $pollist, $params ) {
+	public static function showResults( &$poll, &$votes, $first_vote, $last_vote, $pollist, $params ) {
 		global $mosConfig_live_site;
 		?>
 		<script type = "text/javascript">
@@ -97,7 +97,7 @@ $data_arr['voters']=null;
 	}
 
 
-	function graphit( $data_arr, $graphtitle, $first_vote, $last_vote ) {
+	public static function graphit( $data_arr, $graphtitle, $first_vote, $last_vote ) {
 		global $mosConfig_live_site, $polls_maxcolors, $tabclass,
 		$polls_barheight, $polls_graphwidth, $polls_barcolor;
 

@@ -64,7 +64,7 @@ if ( $css != '' && !is_dir($mosConfig_absolute_path .'/administrator/templates/'
 	$css 	= 'rhuk_solarflare_ii';
 }
 
-$iso = split( '=', _ISO );
+$iso = explode( '=', _ISO );
 // xml prolog
 echo '<?xml version="1.0" encoding="'. $iso[1] .'"?' .'>';
 ?>

@@ -216,7 +216,7 @@ class HTML_templates {
 	* @param string Source code
 	* @param string The option
 	*/
-	function editTemplateSource( $template, &$content, $option, $client ) {
+	public static function editTemplateSource( $template, &$content, $option, $client ) {
 		global $mosConfig_absolute_path;
 		$template_path =
 			$mosConfig_absolute_path . ($client == 'admin' ? '/administrator':'') .
@@ -271,7 +271,7 @@ class HTML_templates {
 	* @param string Source code
 	* @param string The option
 	*/
-	function editCSSSource( $template, &$content, $option, $client ) {
+	public static function editCSSSource( $template, &$content, $option, $client ) {
 		global $mosConfig_absolute_path;
 		$css_path =
 			$mosConfig_absolute_path . ($client == 'admin' ? '/administrator' : '')
@@ -357,7 +357,7 @@ class HTML_templates {
 	* @param array
 	* @param string The option
 	*/
-	function editPositions( &$positions, $option ) {
+	public static function editPositions( &$positions, $option ) {
 		$rows = 25;
 		$cols = 2;
 		$n = $rows * $cols;

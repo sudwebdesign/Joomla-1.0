@@ -11,7 +11,7 @@ class php_file_utilities {
 	* @param string The attributes for the read operation ('r' or 'rb' or 'rt')
 	* @return mixed he text or binary data contained in the file
 	*/
-	function &getDataFromFile($filename, $readAttributes, $readSize = 8192) {
+	public static function getDataFromFile($filename, $readAttributes, $readSize = 8192) {
 		$fileContents = null;
 		$fileHandle = @fopen($filename, $readAttributes);
 
@@ -38,7 +38,7 @@ class php_file_utilities {
 	* @param mixed The data to be written
 	* @param string The attributes for the write operation ('w' or 'wb')
 	*/
-	function putDataToFile($fileName, &$data, $writeAttributes) {
+	public static function putDataToFile($fileName, &$data, $writeAttributes) {
 		$fileHandle = @fopen($fileName, $writeAttributes);
 
 		if ($fileHandle) {

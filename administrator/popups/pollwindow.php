@@ -38,7 +38,7 @@ $query = "SELECT text"
 $database->setQuery( $query );
 $options = $database->loadResultArray();
 
-$iso = split( '=', _ISO );
+$iso = explode( '=', _ISO );
 // xml prolog
 echo '<?xml version="1.0" encoding="'. $iso[1] .'"?' .'>';
 ?>

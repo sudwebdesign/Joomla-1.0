@@ -2687,7 +2687,7 @@ class patFactory {
 		$tmpl->addGlobalVar('treecss', 'dtree.css');
 		$tmpl->addGlobalVar('treeimgfolder', 'img');
 
-		$iso = split( '=', _ISO );
+		$iso = explode( '=', _ISO );
 		$tmpl->addGlobalVar( 'page_encoding', $iso[1] );
 		$tmpl->addGlobalVar( 'version_copyright', $GLOBALS['_VERSION']->COPYRIGHT );
 		$tmpl->addGlobalVar( 'version_url', $GLOBALS['_VERSION']->URL );
