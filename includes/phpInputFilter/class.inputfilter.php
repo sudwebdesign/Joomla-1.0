@@ -58,7 +58,7 @@ class InputFilter
 	function decode($source)
 	{
 		// url decode
-		$source = html_entity_decode($source, ENT_QUOTES, "ISO-8859-1");
+		$source = html_entity_decode($source, ENT_QUOTES);
 		// convert decimal
 		$source = preg_replace_callback('/&#(\d+);/m', create_function ('$matches', 'return "chr($matches[1])";'), $source); // decimal notation
 		// convert hex
