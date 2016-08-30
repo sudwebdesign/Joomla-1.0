@@ -21,7 +21,7 @@ defined( '_VALID_MOS' ) or die( 'Restricted access' );
 */
 class HTML_wrapper {
 
-	function displayWrap( &$row, &$params, &$menu ) {
+	public static function displayWrap( &$row, &$params, &$menu ) {
 		?>
 		<script language="javascript" type="text/javascript">
 		function iFrameHeight() {
