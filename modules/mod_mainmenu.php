@@ -23,22 +23,22 @@ if (!defined( '_MOS_MAINMENU_MODULE' )) {
 	*/
 	function mosGetMenuLink( $mitem, $level=0, &$params, $open=null ) {
 		global $Itemid, $mosConfig_live_site, $mainframe;
-		
+
 		$txt = '';
-		
+
 		switch ($mitem->type) {
 			case 'separator':
 			case 'component_item_link':
 				break;
-				
+
 			case 'url':
-				if (preg_match('/index.php\?/', $link) && !preg_match('/http/', $link) && !preg_match('/https/', $link)) {
+				if (isset($link) && preg_match('/index.php\?/', $link) && !preg_match('/http/', $link) && !preg_match('/https/', $link)) {
 					if (!preg_match('/Itemid=/', $link)) {
 						$mitem->link .= '&Itemid='. $mitem->id;
 					}
 				}
 				break;
-				
+
 			case 'content_item_link':
 			case 'content_typed':
 				// load menu params
@@ -49,8 +49,8 @@ if (!defined( '_MOS_MAINMENU_MODULE' )) {
 				if ( $unique_itemid ) {
 					$mitem->link .= '&Itemid='. $mitem->id;
 				} else {
-					$temp = split('&task=view&id=', $mitem->link);
-					
+					$temp = explode('&task=view&id=', $mitem->link);
+
 					if ( $mitem->type == 'content_typed' ) {
 						$mitem->link .= '&Itemid='. $mainframe->getItemid($temp[1], 1, 0);
 					} else {
