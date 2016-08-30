@@ -9,5 +9,6 @@
 **/
 
 /** The file system path to the domit library */
-define('DOMIT_INCLUDE_PATH', (dirname(__FILE__) . "/"));
+if (!defined('DOMIT_INCLUDE_PATH'))
+	define('DOMIT_INCLUDE_PATH', (dirname(__FILE__) . "/"));/* Path to DOMIT! files */
 require_once(DOMIT_INCLUDE_PATH . 'xml_domit_parser.php');
