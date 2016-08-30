@@ -208,13 +208,13 @@ class mosInstaller {
 	/**
 	* Abstract uninstall method
 	*/
-	function uninstall() {
+	function uninstall( $cid, $option, $client=0 ) {
 		die( 'Method "uninstall" cannot be called by class ' . strtolower(get_class( $this )) );
 	}
 	/**
 	* return to method
 	*/
-	function returnTo( $option, $element ) {
+	function returnTo( $option, $element, $client ) {
 		return "index2.php?option=$option&element=$element";
 	}
 	/**
