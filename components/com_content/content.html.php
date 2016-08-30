@@ -1002,7 +1002,7 @@ class HTML_content {
 			}
 		}
 		?>
-		public static function submitbutton(pressbutton) {
+		function submitbutton(pressbutton) {
 			var form = document.adminForm;
 			if (pressbutton == 'cancel') {
 				submitform( pressbutton );
@@ -1428,7 +1428,7 @@ class HTML_content {
 		$mainframe->addCustomHeadTag( '<link rel="stylesheet" href="templates/'. $template .'/css/template_css.css" type="text/css" />' );
 		?>
 		<script language="javascript" type="text/javascript">
-		public static function submitbutton() {
+		function submitbutton() {
 			var form = document.frontendForm;
 			// do field validation
 			if (form.email.value == "" || form.youremail.value == "") {
