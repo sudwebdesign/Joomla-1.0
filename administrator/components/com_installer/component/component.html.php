@@ -24,7 +24,7 @@ class HTML_component {
 * @param array An array of records
 * @param string The URL option
 */
-	function showInstalledComponents( $rows, $option ) {
+	public static function showInstalledComponents( $rows, $option ) {
 		if (count( $rows )) {
 			?>
 			<form action="index2.php" method="post" name="adminForm">

@@ -437,7 +437,7 @@ public static function preview( $popup='', $updateEditors=false ) {
 		<td>
 			<script language="javascript" type="text/javascript">
 			<!--
-			public static function popup() {
+			function popup() {
 				<?php
 				if ($updateEditors) {
 					getEditorContents( 'editor1', 'introtext' );

@@ -23,7 +23,7 @@ class mosToolBar {
 	/**
 	* Writes the start of the button bar table
 	*/
-	function startTable() {
+	public static function startTable() {
 		?>
 		<style type="text/css">
 		table#toolbar {
@@ -62,7 +62,7 @@ class mosToolBar {
 	* @param string The alt text for the icon image
 	* @param boolean True if required to check that a standard list item is checked
 	*/
-	function custom( $task='', $icon=NULL, $iconOver='', $alt='', $listSelect=true ) {
+	public static function custom( $task='', $icon=NULL, $iconOver='', $alt='', $listSelect=true ) {
 		if ($listSelect) {
 			$href = "javascript:if (document.adminForm.boxchecked.value == 0){ alert('Please make a selection from the list to $alt');}else{submitbutton('$task')}";
 		} else {
@@ -81,7 +81,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function addNew( $task='new', $alt=_CMN_NEW ) {
+	public static function addNew( $task='new', $alt=_CMN_NEW ) {
 		$image = mosAdminMenus::ImageCheck( 'new_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -96,7 +96,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function publish( $task='publish', $alt=_CMN_PUBLISHED ) {
+	public static function publish( $task='publish', $alt=_CMN_PUBLISHED ) {
 		$image = mosAdminMenus::ImageCheck( 'publish_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -111,7 +111,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function publishList( $task='publish', $alt=_CMN_PUBLISHED ) {
+	public static function publishList( $task='publish', $alt=_CMN_PUBLISHED ) {
 		$image = mosAdminMenus::ImageCheck( 'publish_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -126,7 +126,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function unpublish( $task='unpublish', $alt=_CMN_UNPUBLISHED ) {
+	public static function unpublish( $task='unpublish', $alt=_CMN_UNPUBLISHED ) {
 		$image = mosAdminMenus::ImageCheck( 'unpublish_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -141,7 +141,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function unpublishList( $task='unpublish', $alt=_CMN_UNPUBLISHED ) {
+	public static function unpublishList( $task='unpublish', $alt=_CMN_UNPUBLISHED ) {
 		$image = mosAdminMenus::ImageCheck( 'unpublish_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -156,7 +156,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function archiveList( $task='archive', $alt=_CMN_ARCHIVE ) {
+	public static function archiveList( $task='archive', $alt=_CMN_ARCHIVE ) {
 		$image = mosAdminMenus::ImageCheck( 'archive_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -171,7 +171,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function unarchiveList( $task='unarchive', $alt=_CMN_UNARCHIVE ) {
+	public static function unarchiveList( $task='unarchive', $alt=_CMN_UNARCHIVE ) {
 		$image = mosAdminMenus::ImageCheck( 'unarchive_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -186,7 +186,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function editList( $task='edit', $alt=_E_EDIT ) {
+	public static function editList( $task='edit', $alt=_E_EDIT ) {
 		$image = mosAdminMenus::ImageCheck( 'edit_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -201,7 +201,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function editHtml( $task='edit_source', $alt=_CMN_EDIT_HTML ) {
+	public static function editHtml( $task='edit_source', $alt=_CMN_EDIT_HTML ) {
 		$image = mosAdminMenus::ImageCheck( 'edit_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -216,7 +216,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function editCss( $task='edit_css', $alt=_CMN_EDIT_CSS ) {
+	public static function editCss( $task='edit_css', $alt=_CMN_EDIT_CSS ) {
 		$image = mosAdminMenus::ImageCheck( 'css_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -232,7 +232,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function deleteList( $msg='', $task='remove', $alt=_CMN_DELETE ) {
+	public static function deleteList( $msg='', $task='remove', $alt=_CMN_DELETE ) {
 		$image = mosAdminMenus::ImageCheck( 'delete_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -246,7 +246,7 @@ class mosToolBar {
 	* Writes a preview button for a given option (opens a popup window)
 	* @param string The name of the popup file (excluding the file extension)
 	*/
-	function preview( $popup='' ) {
+	public static function preview( $popup='' ) {
 		global $database;
 		$sql = "SELECT template"
 		. "\n FROM #__templates_menu"
@@ -269,7 +269,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function save( $task='save', $alt=_CMN_SAVE ) {
+	public static function save( $task='save', $alt=_CMN_SAVE ) {
 		$image = mosAdminMenus::ImageCheck( 'save_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -284,7 +284,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function apply( $task='apply', $alt=_CMN_APPLY ) {
+	public static function apply( $task='apply', $alt=_CMN_APPLY ) {
 		$image = mosAdminMenus::ImageCheck( 'apply_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -297,7 +297,7 @@ class mosToolBar {
 	/**
 	* Writes a save button for a given option (NOTE this is being deprecated)
 	*/
-	function savenew() {
+	public static function savenew() {
 		$image = mosAdminMenus::ImageCheck( 'save_f2.png', '/images/', NULL, NULL, 'save', 'save', 1 );
 		?>
 		<td>
@@ -310,7 +310,7 @@ class mosToolBar {
 	/**
 	* Writes a save button for a given option (NOTE this is being deprecated)
 	*/
-	function saveedit() {
+	public static function saveedit() {
 		$image = mosAdminMenus::ImageCheck( 'save_f2.png', '/images/', NULL, NULL, 'save', 'save', 1 );
 		?>
 		<td>
@@ -325,7 +325,7 @@ class mosToolBar {
 	* @param string An override for the task
 	* @param string An override for the alt text
 	*/
-	function cancel( $task='cancel', $alt=_CMN_CANCEL ) {
+	public static function cancel( $task='cancel', $alt=_CMN_CANCEL ) {
 		$image = mosAdminMenus::ImageCheck( 'cancel_f2.png', '/images/', NULL, NULL, $alt, $task, 1, 'middle', $alt );
 		?>
 		<td>
@@ -339,7 +339,7 @@ class mosToolBar {
 	* Writes a cancel button that will go back to the previous page without doing
 	* any other operation
 	*/
-	function back() {
+	public static function back() {
 		$image = mosAdminMenus::ImageCheck( 'back_f2.png', '/images/', NULL, NULL, 'back', 'cancel', 1 );
 		?>
 		<td>
@@ -352,7 +352,7 @@ class mosToolBar {
 	/**
 	* Write a divider between menu buttons
 	*/
-	function divider() {
+	public static function divider() {
 		$image = mosAdminMenus::ImageCheck( 'menu_divider.png', '/images/' );
 		?>
 		<td>
@@ -365,7 +365,7 @@ class mosToolBar {
 	* Writes a media_manager button
 	* @param string The sub-drectory to upload the media to
 	*/
-	function media_manager( $directory = '' ) {
+	public static function media_manager( $directory = '' ) {
 		$image = mosAdminMenus::ImageCheck( 'upload_f2.png', '/images/', NULL, NULL, 'Upload Image', 'uploadPic', 1 );
 		?>
 		<td>
@@ -379,7 +379,7 @@ class mosToolBar {
 	* Writes a spacer cell
 	* @param string The width for the cell
 	*/
-	function spacer( $width='' ) {
+	public static function spacer( $width='' ) {
 		if ($width != '') {
 			?>
 			<td width="<?php echo $width;?>">&nbsp;</td>
@@ -394,7 +394,7 @@ class mosToolBar {
 	/**
 	* Writes the end of the menu bar table
 	*/
-	function endTable() {
+	public static function endTable() {
 		?>
 		</tr>
 		</table>

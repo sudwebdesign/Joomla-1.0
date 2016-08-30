@@ -43,7 +43,7 @@ $GLOBALS['HTTP_Exception_log'] = null;
 * @author John Heinstein <johnkarl@nbnet.nb.ca>
 */
 class HTTPExceptions {
-	function raiseException($errorNum, $errorString) {
+	public static function raiseException($errorNum, $errorString) {
 		//die('HTTP Exception: ' . $errorNum  .  "\n " . $errorString);
 
 		if ($GLOBALS['HTTP_Exception_errorHandler'] != null) {

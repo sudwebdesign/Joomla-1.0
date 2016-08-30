@@ -25,7 +25,7 @@ class HTML_mambot {
 * @param array An array of mambot object
 * @param strong The URL option
 */
-	function showInstalledMambots( &$rows, $option ) {
+	public static function showInstalledMambots( &$rows, $option ) {
 		?>
 		<table class="adminheading">
 		<tr>
