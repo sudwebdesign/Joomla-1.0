@@ -24,6 +24,9 @@ echo '<?xml version="1.0" encoding="'. $iso[1] .'"?' .'>';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title><?php echo $mosConfig_sitename; ?> - Administration [Joomla!]</title>
+<meta http-equiv="Content-Type" content="text/html; <?php echo _ISO; ?>" />
+<meta name="Generator" content="Joomla! Content Management System" />
+<link rel="shortcut icon" href="<?php echo $mosConfig_live_site .'/images/favicon.ico';?>" />
 <link rel="stylesheet" href="templates/joomla_admin/css/template_css.css" type="text/css" />
 <link rel="stylesheet" href="templates/joomla_admin/css/theme.css" type="text/css" />
 <script language="JavaScript" src="<?php echo $mosConfig_live_site; ?>/includes/js/JSCookMenu_mini.js" type="text/javascript"></script>
@@ -43,9 +46,6 @@ if (isset( $mainframe->_head['custom'] ))
 	echo implode( "\n", $head ) . "\n";
 }
 ?>
-<meta http-equiv="Content-Type" content="text/html; <?php echo _ISO; ?>" />
-<meta name="Generator" content="Joomla! Content Management System" />
-<link rel="shortcut icon" href="<?php echo $mosConfig_live_site .'/images/favicon.ico';?>" />
 </head>
 <body onload="MM_preloadImages('images/help_f2.png','images/archive_f2.png','images/back_f2.png','images/cancel_f2.png','images/delete_f2.png','images/edit_f2.png','images/new_f2.png','images/preview_f2.png','images/publish_f2.png','images/save_f2.png','images/unarchive_f2.png','images/unpublish_f2.png','images/upload_f2.png')">
 
