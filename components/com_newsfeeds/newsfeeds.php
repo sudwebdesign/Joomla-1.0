@@ -230,3 +230,17 @@ function showFeed( $feedid ) {
 
 	HTML_newsfeed::showNewsfeeds( $newsfeed, $LitePath, $cacheDir, $params );
 }
+
+//Parse the feeds 2016
+function parseFeeds($feedUrl) {
+ $rawFeed = @file_get_contents($feedUrl);
+ if($rawFeed){
+  libxml_use_internal_errors(true);
+  try { 
+   return @new SimpleXmlElement($rawFeed);
+  } catch (Exception $e){
+   return @new SimpleXmlElement('<rss version="2.0"><channel><title>Not Valid RSS Feed</title><link>'.$feedUrl.'</link><description>This adress : '.$feedUrl.' occur an error : '.$e->getMessage().' Sorry.</description></channel></rss>');
+  } 
+ }
+}
+
