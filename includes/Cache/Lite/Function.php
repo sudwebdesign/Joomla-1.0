@@ -111,6 +111,12 @@ class Cache_Lite_Function extends Cache_Lite
     function call()
     {
         $arguments = func_get_args();
+        foreach ($arguments as $count => $value)
+        {
+            $param = 'param' . $count;
+            $$param = $value;
+            $arguments[$count] = &$$param;
+        }
         $id = $this->_makeId($arguments);
         $data = $this->get($id, $this->_defaultGroup);
         if ($data !== false) {
